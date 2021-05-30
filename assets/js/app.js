@@ -140,6 +140,8 @@ $(document).ready(function () {
     })
 
 
+
+
     var mainLogo = 'h1.main-logo';
     var smallLogo = 'h1.small-logo';
     var overlay =  '.overlay';
@@ -183,6 +185,9 @@ $(document).ready(function () {
             })
 
     }
+
+    
+
     // let lastCopy = $('#contact'),
         
     // navPosition = $(aboutNav).offset().top + $(aboutNav).height(),
