@@ -15,8 +15,9 @@ html.splash {
 
     &.reveal {
         overflow: auto;
-        body {
+        body{
             transition: background-color 360ms ease-in-out;
+            
         }
     }
 }
@@ -31,7 +32,28 @@ html.splash {
     top: 0;
     left: 0;
     z-index: 1000;
-    background: $yellow;
+
+    // display: none;
+
+    .ov-inner {
+
+        display: none;
+
+        &.display {
+            display: block;
+        }
+
+        &.ov-1 {
+            background-color: $yellow;
+        }
+        &.ov-2 {
+            background-color: $green;
+        }
+        &.ov-3 {
+            background-color: $blue;
+        }
+    }
+
 }
  
 
@@ -203,7 +225,10 @@ html.reveal {
                 position: fixed;
                 top: 0;
                 left: 0; 
+
+                
                 transition: background-color 360ms ease-in-out;
+
             }
 
             .about-copy-wrap .block {

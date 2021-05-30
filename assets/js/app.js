@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
     
-   
-
     let aboutWrap = '#about-wrap',
         aboutNav = '.about-nav';
        
@@ -63,7 +61,8 @@ $(document).ready(function () {
                     console.log(sectionAnchor)
 
 
-                    if ($(window).width() <= 700) {
+                    if ($(window).width() <= 700 && $('html').hasClass('reveal')) {
+
                         $('.about-block .about-nav').css('background-color', bgColor)
                     }
                    
@@ -135,13 +134,33 @@ $(document).ready(function () {
 
         setTimeout(function () {
             $('html').removeClass('zwitch');
-            $(window).scrollTop();
+
+            $("html, body").animate({ scrollTop: 0 }, 360);
         }, 360)
+    })
 
 
+    var mainLogo = 'h1.main-logo';
+    var overlay =  '.overlay';
+    var overlaySlide = overlay + ' .ov-inner';
+
+    $(mainLogo).on('mouseenter',function() {
+        $(overlay).fadeIn(300)
+
+       
+        setTimeout(function() {
+            $(overlay).fadeOut(300, function() {
+                $(overlaySlide).toggleClass('display')
+            })
+        },1000)
 
     })
 
+    $(overlay).on('click',function() {
+        $(overlay).fadeOut(300, function() {
+            $(overlaySlide).toggleClass('display')
+        })
+    })
 
 
 

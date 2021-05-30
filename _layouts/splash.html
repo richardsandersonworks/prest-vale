@@ -29,16 +29,24 @@
 </head> 
 
 
-
+ 
 
     <body class="{{ page.layout }}">
 
         
 
-        <section class="overlay visually-hidden">
-            <h1 alt="Prest Vale Architects">
-                {%- include inline-icon.html svg="icon-logo-main.svg" -%} 
-            </h1>   
+        <section class="overlay">
+            <div class="ov-1 ov-inner display">
+                {%- include inline-icon.html svg="p-overlay.svg" -%} 
+            </div>
+
+            <div class="ov-2 ov-inner"> 
+                {%- include inline-icon.html svg="v-overlay.svg" -%} 
+            </div>
+
+            <!-- <div class="ov-3 ov-inner">
+                {%- include inline-icon.html svg="p-overlay.svg" -%} 
+            </div> -->
         </section>
 
 
