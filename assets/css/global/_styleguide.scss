@@ -1,0 +1,41 @@
+body {
+    font-family: $signifierLight;
+    font-size: 30px;
+
+    color: $black;
+
+    line-height: 1.3;
+    letter-spacing: 0em;
+
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+em, .i {
+    font-family: $signifierItalic;
+}
+
+h1, .h1 {
+    font-family: $signifierLight;
+    font-size: 64px;
+    font-style: normal;
+    line-height: 1.3;
+    letter-spacing: 0em;
+}
+
+h2,.h2 {
+    font-family: $signifier;
+    font-size: 30px;
+    
+    line-height: 1.3;
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+}
+
+a {
+    font-family: $signifierLightItalic;
+}

@@ -1,0 +1,130 @@
+html.splash {
+    background: $stone;
+    overflow: hidden;
+
+    &.reveal {
+        overflow: auto;
+    }
+}
+
+
+.overlay {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: $yellow;
+}
+ 
+
+.intro-block {
+    height: 100vh;
+    background: $clay;
+    position: relative;
+    z-index: $z100;
+
+    @include flex(center,center);
+    flex-direction: column;
+
+    h1 {
+        width: 100%;
+        height: auto;
+    }
+
+    .info {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        
+
+    }
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    transition: opacity ease-in 360ms; 
+
+
+}
+
+
+html.reveal {
+    .intro-block {
+        // transform: translateY(-100%);
+        opacity: 0;
+        // position: relative;
+    }
+
+    &.zwitch {
+        .intro-block {
+            z-index: 0;
+        }
+    }
+}
+
+
+
+.about-block {
+    position: relative;
+    z-index: $z50;
+
+    .close-link {
+        position: fixed;
+        right: 0;
+        top: 0;
+        text-align: right;
+
+        height: 20vh;
+        background: linear-gradient(180deg, $stone 50%, rgba(240, 105, 31, 0) 100%);
+    }
+
+    .about-wrap {
+        
+        padding-top: 20vh;
+
+        @include flex(flex-start,center);
+        flex-wrap: nowrap;
+
+        .about-nav, .about-copy-wrap {
+            width: 50%;
+        }
+
+        .about-nav {
+            position: sticky;
+            top: 20vh;
+            left: 0;
+
+            a {
+                width: 100%;
+                display: block;
+            }
+
+        }
+
+        .about-copy-wrap {
+            h2 {
+                margin-bottom: 1em;
+            }
+            .block {
+                margin-bottom: 120px;
+            }
+        }
+
+        .copy {
+            max-width: 24em;
+        }
+
+        h2 {
+            max-width: 20em;
+        }
+
+
+    }
+
+}
