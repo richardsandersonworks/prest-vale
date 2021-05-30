@@ -14,3 +14,9 @@
 .grid {
     @include grid;
 }
+
+@include mq($break-m) {
+    .wrapper {
+        padding: $gapGlobal $gapGlobal;
+    }
+}

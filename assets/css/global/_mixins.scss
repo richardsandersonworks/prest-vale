@@ -10,3 +10,9 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: $gapGlobal;
 }
+
+@mixin mq($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}

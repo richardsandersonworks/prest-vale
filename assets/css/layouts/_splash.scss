@@ -5,7 +5,9 @@
     100% { background-color: $stone; }
 }
 
-
+body {
+    transition: background-color 12s ease-in-out;
+}
 
 html.splash {
     background: $stone;
@@ -13,8 +15,13 @@ html.splash {
 
     &.reveal {
         overflow: auto;
+        body {
+            transition: background-color 360ms ease-in-out;
+        }
     }
 }
+
+
 
 
 .overlay {
@@ -30,7 +37,7 @@ html.splash {
 
 .intro-block {
 
-    animation: color 10000ms linear infinite;
+    animation: color 10000ms ease-in-out infinite;
 
 
     height: 100vh;
@@ -44,6 +51,10 @@ html.splash {
     h1 {
         width: 100%;
         height: auto;
+
+        &.small-logo {
+            display: none;
+        }
     }
 
     .info {
@@ -54,6 +65,9 @@ html.splash {
         width: 100%;
         text-align: center;
         
+        .info-link {
+            width: 100%;
+        }
 
     }
 
@@ -63,6 +77,22 @@ html.splash {
 
     transition: opacity ease-in 360ms; 
 
+
+    @include mq($break-m) {
+
+        height: 100%;
+
+        h1 {
+            &.small-logo {
+                display: block;
+            }
+
+            &.main-logo {
+                display: none;
+            }
+        }
+
+    }
 
 }
 
@@ -94,7 +124,7 @@ html.reveal {
         text-align: right;
 
         height: 20vh;
-        background: linear-gradient(180deg, $stone 50%, rgba(240, 105, 31, 0) 100%);
+        // background: linear-gradient(180deg, $stone 50%, rgba(0, 0, 0, 0) 100%);
     }
 
     .about-wrap {
@@ -116,6 +146,11 @@ html.reveal {
             a {
                 width: 100%;
                 display: block;
+                font-family: $signifierLight;
+
+                &.focus {
+                    font-family: $signifier;
+                }
             }
 
         }
@@ -126,6 +161,10 @@ html.reveal {
             }
             .block {
                 margin-bottom: 120px;
+
+                &:last-of-type {
+                    margin-bottom: 90vh;
+                }
             }
         }
 
@@ -140,4 +179,41 @@ html.reveal {
 
     }
 
+    @include mq($break-m) {
+
+        .close-link {
+            width: auto;
+            height: auto;
+            z-index: $z100;
+            padding-top: 30px;
+            // background: linear-gradient(180deg, $stone 50%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .about-wrap {
+            padding-top: 40%;
+
+            display: block;
+
+            .about-nav, .about-copy-wrap {
+                width: 100%;
+            }
+
+            .about-nav {
+                padding: $gapGlobal+10 $gapGlobal;
+                position: fixed;
+                top: 0;
+                left: 0; 
+                transition: background-color 360ms ease-in-out;
+            }
+
+            .about-copy-wrap .block {
+                &:last-of-type {
+                    margin-bottom: 250px;
+                }
+            }
+            
+        }
+    }
+
 }
+
