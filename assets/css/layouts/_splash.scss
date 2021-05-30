@@ -1,3 +1,12 @@
+@keyframes color {
+    0% { background-color: $stone; }
+    33% { background-color: $clay;}
+    66% { background-color: $forest;}
+    100% { background-color: $stone; }
+}
+
+
+
 html.splash {
     background: $stone;
     overflow: hidden;
@@ -20,6 +29,10 @@ html.splash {
  
 
 .intro-block {
+
+    animation: color 10000ms linear infinite;
+
+
     height: 100vh;
     background: $clay;
     position: relative;
