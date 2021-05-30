@@ -141,6 +141,7 @@ $(document).ready(function () {
 
 
     var mainLogo = 'h1.main-logo';
+    var smallLogo = 'h1.small-logo';
     var overlay =  '.overlay';
     var overlaySlide = overlay + ' .ov-inner';
 
@@ -162,7 +163,35 @@ $(document).ready(function () {
         })
     })
 
+    if ($(window).width() <= 700 ) {
 
+           $(smallLogo).on('click',function() {
+                $(overlay).fadeIn(300)
+
+                setTimeout(function() {
+                    $(overlay).fadeOut(300, function() {
+                        $(overlaySlide).toggleClass('display')
+                    })
+                },1000)
+
+            })
+
+            $(overlay).on('click',function() {
+                $(overlay).fadeOut(300, function() {
+                    $(overlaySlide).toggleClass('display')
+                })
+            })
+
+    }
+    // let lastCopy = $('#contact'),
+        
+    // navPosition = $(aboutNav).offset().top + $(aboutNav).height(),
+    //     navFrom = window.innerHeight - navPosition;
+
+    //     lastCopy.css('margin-bottom',navFrom)
+
+
+    
 
 
 }) 

@@ -33,11 +33,17 @@ html.splash {
     left: 0;
     z-index: 1000;
 
-    // display: none;
+    display: none;
 
     .ov-inner {
 
         display: none;
+        height: 100%;
+        .inline-icon svg {
+            width: 100%;
+            height: 100%;
+
+        }
 
         &.display {
             display: block;
@@ -52,7 +58,27 @@ html.splash {
         &.ov-3 {
             background-color: $blue;
         }
+
+
+        
     }
+
+
+    @include mq($break-m) {
+        width: auto;
+       height: 100%;
+
+        .ov-inner {
+  
+            .inline-icon svg {
+                width: auto;
+            }
+
+        }
+    }
+
+ 
+  
 
 }
  
@@ -218,6 +244,14 @@ html.reveal {
 
             .about-nav, .about-copy-wrap {
                 width: 100%;
+
+                h2 {
+                    opacity: 0;
+                }
+
+                #contact h2 {
+                    opacity: 1;
+                }
             }
 
             .about-nav {
