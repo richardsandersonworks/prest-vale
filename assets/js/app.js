@@ -5,19 +5,11 @@ $(document).ready(function () {
 
 
     let aboutWrap = '#about-wrap',
-        aboutNav = '.about-nav',
-        windowHeight = $(window).height();
+        aboutNav = '.about-nav';
 
     const observedSections = document.querySelectorAll(aboutWrap + ' .block h2')
-    const parentBlock = document.querySelectorAll(aboutWrap + ' .block')
-    const $closeButton = $('.about-block .close-link');
    
 
-    let orange = '#F0691F',
-        yellow = '#FFE922',
-        blue = '#3E86BC',
-        green = '#2A8F5C';
-    
     const dynamicBg = function () {
 
         const topViewport = window.pageYOffset
@@ -62,8 +54,7 @@ $(document).ready(function () {
                     console.log(sectionAnchor)
 
 
-                    if ($(window).width() <= 700 && $('html').hasClass('reveal')) {
-
+                    if ($(window).width() <= 700) {
                         $('.about-block .about-nav').css('background-color', bgColor)
                     }
                    
@@ -128,21 +119,12 @@ $(document).ready(function () {
     });
 
     
+    if ($(window).width() <= 700) {
+
+        $('a.close').html('&times;')
+    }
 
 
-
-    var closeLink = '.close';
-
-    $(closeLink).on('click', function (e) {
-        e.preventDefault();
-        $('html').removeClass('reveal');
-
-        setTimeout(function () {
-            $('html').removeClass('zwitch');
-
-            $("html, body").animate({ scrollTop: 0 }, 360);
-        }, 360)
-    })
 
     var mainLogo = 'h1.main-logo';
     var smallLogo = 'h1.small-logo';
@@ -217,7 +199,7 @@ $(document).ready(function () {
                     .addClass('hover')
                     .addClass(bgNoClass)
                     .css('left',logoPositionX+'%')
-                    .css('transform','scale(1.9)');
+                    .css('transform','scale(1.7)');
                 
 
                 setTimeout(function() {
@@ -340,22 +322,19 @@ $(document).ready(function () {
         repeat: -1,
         // onComplete: overlay
     });
-    const overlayAnim =  gsap.timeline();
-    
-    
     var h1Height = introLogo.height()
     var h1Width = introLogoSmlSvg.width() + 30
     var windowWidth = $(window).width() 
 
-
+    const introAnimFunction = function () {
     introAnim
         .set(introLogo, { y: h1Height })
         .set(introInfo,{opacity: 0})
         .to(introLogo, {y: 0, delay: .5, duration: .36})
-        .set(introInfo,{opacity: 1, delay: 1, duration: .72})
+        .set(introInfo,{opacity: 1, delay: .36, duration: .36})
         .call(introBgClass)
-
-    
+    }
+    introAnimFunction()
     
     if ($(window).width() <= 700) {
         introMovement
@@ -372,6 +351,19 @@ $(document).ready(function () {
         }
     })
 
+
+    var closeLink = '.close';
+
+    $(closeLink).on('click', function (e) {
+        e.preventDefault();
+        $('html').removeClass('reveal');
+        introAnimFunction()
+        setTimeout(function () {
+            $('html').removeClass('zwitch');
+            $("html, body").animate({ scrollTop: 0 }, 360);
+        
+        }, 360)
+    })
 
 
 
