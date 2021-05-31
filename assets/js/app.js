@@ -5,7 +5,8 @@ $(document).ready(function () {
 
 
     let aboutWrap = '#about-wrap',
-        aboutNav = '.about-nav';
+        aboutNav = '.about-nav',
+        windowHeight = $(window).height();
 
     const observedSections = document.querySelectorAll(aboutWrap + ' .block h2')
     const parentBlock = document.querySelectorAll(aboutWrap + ' .block')
@@ -143,12 +144,12 @@ $(document).ready(function () {
         }, 360)
     })
 
+    var mainLogo = 'h1.main-logo';
+    var smallLogo = 'h1.small-logo';
+    var overlay =  '.overlay';
+    var overlaySlide = overlay + ' .ov-inner';
 
-    const overlay = function() {
-        var mainLogo = 'h1.main-logo';
-        var smallLogo = 'h1.small-logo';
-        var overlay =  '.overlay';
-        var overlaySlide = overlay + ' .ov-inner';
+    const overlayV1 = function() {
 
     $(mainLogo).on('mouseenter',function() {
         $(overlay).fadeIn(300)
@@ -189,8 +190,140 @@ $(document).ready(function () {
         }
     }
 
-    
+   
 
+
+
+    
+    const overlayV2 = function() {
+
+        let mainLogoSml = '.small-logo',
+            logoPosition = () => {
+                return 1 * Math.random() * 100
+            };
+            var bgNo = 1;
+            var bgNoClass = 'ov-' + bgNo.toString();
+            var logoPositionXSml = 0;
+
+
+        if ($(window).width() > 700 ) {
+            $(mainLogo).on('mouseenter',function() {
+                
+                console.log(bgNo)
+
+                var logoPositionX = logoPosition();
+                
+                $(this)
+                    .addClass('hover')
+                    .addClass(bgNoClass)
+                    .css('left',logoPositionX+'%')
+                    .css('transform','scale(1.9)');
+                
+
+                setTimeout(function() {
+                    console.log('timeout..')
+                    
+                    $(mainLogo)
+                    .removeClass('hover')
+                    .removeClass(bgNoClass)
+                    .css('transform','none')
+        
+                    if (bgNo == 4) {
+                        bgNo = 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    } else {
+                        bgNo = bgNo + 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    }  
+                },1000)
+            })
+
+            $(mainLogo).on('click',function() {
+                $(this)
+                    .removeClass('hover')
+                    .removeClass(bgNoClass)
+                    .css('transform','none')
+    
+                    if (bgNo == 4) {
+                        bgNo = 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    } else {
+                        bgNo = bgNo + 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    }
+            })
+        } else {
+            $(smallLogo).on('click',function() {
+                
+                console.log(logoPositionXSml)
+
+                $(mainLogo)
+                    .show()
+                    .addClass('hover')
+                    .addClass(bgNoClass)
+                    // .css('left',logoPositionXSml+'%')
+                    .css('transform','scale(1.35)');
+                
+                $(mainLogo + ' .inline-icon svg').css('transform', 'translateX(-'+logoPositionXSml+'px)')
+
+                setTimeout(function() {
+
+                    $(mainLogo)
+                    .hide()
+                    .removeClass('hover')
+                    .removeClass(bgNoClass)
+                    .css('transform','none')
+
+                    $(mainLogo + '.inline-icon svg').css('transform', 'none')
+
+                    if (bgNo == 4) {
+                        bgNo = 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    } else {
+                        bgNo = bgNo + 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    }
+
+                    if (logoPositionXSml > 1800 ) {
+                        logoPositionXSml = 180
+                    } else {
+                        logoPositionXSml = logoPositionXSml + 270
+                    }
+                },1000)
+            })
+
+            $(mainLogo).on('click',function() {
+                $(this)
+                    .hide()
+                    .removeClass('hover')
+                    .removeClass(bgNoClass)
+                    .css('transform','none')
+
+                $(mainLogo + '.inline-icon svg').css('transform', 'none')
+
+                    
+                    if (bgNo == 4) {
+                        bgNo = 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    } else {
+                        bgNo = bgNo + 1
+                        bgNoClass = 'ov-' + bgNo.toString();
+                    }
+
+                    if (logoPositionXSml > 1800 ) {
+                        logoPositionXSml = 180
+                    } else {
+                        logoPositionXSml = logoPositionXSml + 270
+                    }
+            })
+        }
+
+     
+
+
+    }
+    
+    overlayV2();
     
     const introBgClass = function () {
         $('.intro-block').addClass('animate');
@@ -199,12 +332,15 @@ $(document).ready(function () {
     const introLogo = $('h1.main-logo .inline-icon');
     const introLogoSml = $('h1.small-logo');
     const introLogoSmlSvg = $('h1.small-logo span')
-    const introAnim = gsap.timeline({onComplete: overlay});
+    const introAnim = gsap.timeline({
+        // onComplete: overlay
+    });
     const introInfo = $('.info');
     const introMovement = gsap.timeline({
         repeat: -1,
-        onComplete: overlay
+        // onComplete: overlay
     });
+    const overlayAnim =  gsap.timeline();
     
     
     var h1Height = introLogo.height()
@@ -222,16 +358,21 @@ $(document).ready(function () {
     
     
     if ($(window).width() <= 700) {
-
         introMovement
             .set(introLogoSml, {x: 0})
             .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
     }
        
 
+    window.addEventListener('resize', function () { 
+        if ($(window).width() <= 700) {
+            introMovement
+                .set(introLogoSml, {x: 0})
+                .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+        }
+    })
 
 
-    
 
 
 }) 
