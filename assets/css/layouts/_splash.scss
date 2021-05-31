@@ -25,6 +25,8 @@ html.splash {
 
 
 
+
+
 .overlay {
     height: 100vh;
     width: 100%;
@@ -85,11 +87,15 @@ html.splash {
 
 .intro-block {
 
-    animation: color 10000ms ease-in-out infinite;
+    background: $stone;
+
+    &.animate {
+        animation: color 12s cubic-bezier(0.68,-0.55,0.27,1.55) infinite;
+    }
 
 
     height: 100vh;
-    background: $clay;
+    // background: $clay;
     position: relative;
     z-index: $z100;
 
@@ -99,6 +105,11 @@ html.splash {
     h1 {
         width: 100%;
         height: auto;
+        
+
+        &.main-logo {
+            overflow: hidden;
+        }
 
         &.small-logo {
             display: none;
@@ -113,9 +124,13 @@ html.splash {
         width: 100%;
         text-align: center;
         
+
         .info-link {
             width: 100%;
         }
+        transition: opacity ease-in 360ms; 
+
+
 
     }
 
@@ -132,7 +147,15 @@ html.splash {
 
         h1 {
             &.small-logo {
-                display: block;
+                display: flex;
+                flex-direction: row;
+                transition: linear;
+                .inline-icon {
+                    flex: 0 0 auto;
+                    width: 200%;
+                    padding: 0 15px;
+                }
+
             }
 
             &.main-logo {
@@ -195,9 +218,11 @@ html.reveal {
                 width: 100%;
                 display: block;
                 font-family: $signifierLight;
+                opacity: .5;
 
                 &.focus {
                     font-family: $signifier;
+                    opacity: 1;
                 }
             }
 

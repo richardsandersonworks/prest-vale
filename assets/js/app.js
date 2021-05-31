@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    
+    //   Dynamic Backgrounds
+
+
+
     let aboutWrap = '#about-wrap',
         aboutNav = '.about-nav';
-       
-
-    //   Dynamic Backgrounds
 
     const observedSections = document.querySelectorAll(aboutWrap + ' .block h2')
     const parentBlock = document.querySelectorAll(aboutWrap + ' .block')
@@ -126,6 +126,10 @@ $(document).ready(function () {
 
     });
 
+    
+
+
+
     var closeLink = '.close';
 
     $(closeLink).on('click', function (e) {
@@ -140,12 +144,11 @@ $(document).ready(function () {
     })
 
 
-
-
-    var mainLogo = 'h1.main-logo';
-    var smallLogo = 'h1.small-logo';
-    var overlay =  '.overlay';
-    var overlaySlide = overlay + ' .ov-inner';
+    const overlay = function() {
+        var mainLogo = 'h1.main-logo';
+        var smallLogo = 'h1.small-logo';
+        var overlay =  '.overlay';
+        var overlaySlide = overlay + ' .ov-inner';
 
     $(mainLogo).on('mouseenter',function() {
         $(overlay).fadeIn(300)
@@ -156,44 +159,76 @@ $(document).ready(function () {
                 $(overlaySlide).toggleClass('display')
             })
         },1000)
-
-    })
-
-    $(overlay).on('click',function() {
-        $(overlay).fadeOut(300, function() {
-            $(overlaySlide).toggleClass('display')
         })
-    })
 
-    if ($(window).width() <= 700 ) {
+        $(overlay).on('click',function() {
+            $(overlay).fadeOut(300, function() {
+                $(overlaySlide).toggleClass('display')
+            })
+        })
 
-           $(smallLogo).on('click',function() {
-                $(overlay).fadeIn(300)
+        if ($(window).width() <= 700 ) {
 
-                setTimeout(function() {
+                $(smallLogo).on('click',function() {
+                    $(overlay).fadeIn(300)
+
+                    setTimeout(function() {
+                        $(overlay).fadeOut(300, function() {
+                            $(overlaySlide).toggleClass('display')
+                        })
+                    },1000)
+
+                })
+
+                $(overlay).on('click',function() {
                     $(overlay).fadeOut(300, function() {
                         $(overlaySlide).toggleClass('display')
                     })
-                },1000)
-
-            })
-
-            $(overlay).on('click',function() {
-                $(overlay).fadeOut(300, function() {
-                    $(overlaySlide).toggleClass('display')
                 })
-            })
 
+        }
     }
 
     
 
-    // let lastCopy = $('#contact'),
-        
-    // navPosition = $(aboutNav).offset().top + $(aboutNav).height(),
-    //     navFrom = window.innerHeight - navPosition;
+    
+    const introBgClass = function () {
+        $('.intro-block').addClass('animate');
+    }
 
-    //     lastCopy.css('margin-bottom',navFrom)
+    const introLogo = $('h1.main-logo .inline-icon');
+    const introLogoSml = $('h1.small-logo');
+    const introLogoSmlSvg = $('h1.small-logo span')
+    const introAnim = gsap.timeline({onComplete: overlay});
+    const introInfo = $('.info');
+    const introMovement = gsap.timeline({
+        repeat: -1,
+        onComplete: overlay
+    });
+    
+    
+    var h1Height = introLogo.height()
+    var h1Width = introLogoSmlSvg.width() + 30
+    var windowWidth = $(window).width() 
+
+
+    introAnim
+        .set(introLogo, { y: h1Height })
+        .set(introInfo,{opacity: 0})
+        .to(introLogo, {y: 0, delay: .5, duration: .36})
+        .set(introInfo,{opacity: 1, delay: 1, duration: .72})
+        .call(introBgClass)
+
+    
+    
+    if ($(window).width() <= 700) {
+
+        introMovement
+            .set(introLogoSml, {x: 0})
+            .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+    }
+       
+
 
 
     
