@@ -183,13 +183,14 @@ html.splash {
 
         h1 {
             &.small-logo {
-                display: flex;
-                flex-direction: row;
-                transition: linear;
+                overflow: hidden;
+                display: block;
+                // flex-direction: row;
+                // transition: linear;
                 .inline-icon {
-                    flex: 0 0 auto;
-                    width: 200%;
-                    padding: 0 15px;
+                    // flex: 0 0 auto;
+                    // width: 200%;
+                    // padding: 0 15px;
                 }
 
             }

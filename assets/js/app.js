@@ -189,7 +189,7 @@ $(document).ready(function () {
 
 
         if ($(window).width() > 700 ) {
-            $(mainLogo).on('mouseenter',function() {
+            $(mainLogo).on('mouseenter', function() {
                 
                 console.log(bgNo)
 
@@ -198,92 +198,41 @@ $(document).ready(function () {
                 $(this)
                     .addClass('hover')
                     .addClass(bgNoClass)
-                    .css('left',logoPositionX+'%')
+                    
                     .css('transform','scale(1.7)');
                 
+                $(mainLogo + ' .inline-icon').css('transform', 'translateX(-'+logoPositionX+'%)')
 
                 setTimeout(function() {
-                    console.log('timeout..')
-                    
-                    $(mainLogo)
-                    .removeClass('hover')
-                    .removeClass(bgNoClass)
-                    .css('transform','none')
-        
-                    if (bgNo == 4) {
-                        bgNo = 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    } else {
-                        bgNo = bgNo + 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    }  
-                },1000)
-            })
 
-            $(mainLogo).on('click',function() {
-                $(this)
-                    .removeClass('hover')
-                    .removeClass(bgNoClass)
-                    .css('transform','none')
+                    $(mainLogo)
+                        .removeClass('hover')
+                        .removeClass(bgNoClass)
+                        .css('transform','none')
+                        $(mainLogo + ' .inline-icon').css('transform','none')
     
-                    if (bgNo == 4) {
-                        bgNo = 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    } else {
-                        bgNo = bgNo + 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    }
+                        if (bgNo == 4) {
+                            bgNo = 1
+                            bgNoClass = 'ov-' + bgNo.toString();
+                        } else {
+                            bgNo = bgNo + 1
+                            bgNoClass = 'ov-' + bgNo.toString();
+                        }
+    
+                    },1000)
+
+
             })
-        } else {
-            $(smallLogo).on('click',function() {
-                
-                console.log(logoPositionXSml)
 
-                $(mainLogo)
-                    .show()
-                    .addClass('hover')
-                    .addClass(bgNoClass)
-                    // .css('left',logoPositionXSml+'%')
-                    .css('transform','scale(1.35)');
-                
-                $(mainLogo + ' .inline-icon svg').css('transform', 'translateX(-'+logoPositionXSml+'px)')
-
-                setTimeout(function() {
-
-                    $(mainLogo)
-                    .hide()
-                    .removeClass('hover')
-                    .removeClass(bgNoClass)
-                    .css('transform','none')
-
-                    $(mainLogo + '.inline-icon svg').css('transform', 'none')
-
-                    if (bgNo == 4) {
-                        bgNo = 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    } else {
-                        bgNo = bgNo + 1
-                        bgNoClass = 'ov-' + bgNo.toString();
-                    }
-
-                    if (logoPositionXSml > 1800 ) {
-                        logoPositionXSml = 180
-                    } else {
-                        logoPositionXSml = logoPositionXSml + 270
-                    }
-                },1000)
-            })
+            
 
             $(mainLogo).on('click',function() {
                 $(this)
-                    .hide()
                     .removeClass('hover')
                     .removeClass(bgNoClass)
                     .css('transform','none')
+                $(mainLogo + ' .inline-icon').css('transform','none')
 
-                $(mainLogo + '.inline-icon svg').css('transform', 'none')
-
-                    
                     if (bgNo == 4) {
                         bgNo = 1
                         bgNoClass = 'ov-' + bgNo.toString();
@@ -291,13 +240,73 @@ $(document).ready(function () {
                         bgNo = bgNo + 1
                         bgNoClass = 'ov-' + bgNo.toString();
                     }
-
-                    if (logoPositionXSml > 1800 ) {
-                        logoPositionXSml = 180
-                    } else {
-                        logoPositionXSml = logoPositionXSml + 270
-                    }
             })
+
+           
+        } else {
+            // $(smallLogo).on('click',function() {
+                
+            //     console.log(logoPositionXSml)
+
+            //     $(mainLogo)
+            //         .show()
+            //         .addClass('hover')
+            //         .addClass(bgNoClass)
+            //         // .css('left',logoPositionXSml+'%')
+            //         .css('transform','scale(1.35)');
+                
+            //     $(mainLogo + ' .inline-icon svg').css('transform', 'translateX(-'+logoPositionXSml+'px)')
+
+            //     setTimeout(function() {
+
+            //         $(mainLogo)
+            //         .hide()
+            //         .removeClass('hover')
+            //         .removeClass(bgNoClass)
+            //         .css('transform','none')
+
+            //         $(mainLogo + '.inline-icon svg').css('transform', 'none')
+
+            //         if (bgNo == 4) {
+            //             bgNo = 1
+            //             bgNoClass = 'ov-' + bgNo.toString();
+            //         } else {
+            //             bgNo = bgNo + 1
+            //             bgNoClass = 'ov-' + bgNo.toString();
+            //         }
+
+            //         if (logoPositionXSml > 1800 ) {
+            //             logoPositionXSml = 180
+            //         } else {
+            //             logoPositionXSml = logoPositionXSml + 270
+            //         }
+            //     },1000)
+            // })
+
+            // $(mainLogo).on('click',function() {
+            //     $(this)
+            //         .hide()
+            //         .removeClass('hover')
+            //         .removeClass(bgNoClass)
+            //         .css('transform','none')
+
+            //     $(mainLogo + '.inline-icon svg').css('transform', 'none')
+
+                    
+            //         if (bgNo == 4) {
+            //             bgNo = 1
+            //             bgNoClass = 'ov-' + bgNo.toString();
+            //         } else {
+            //             bgNo = bgNo + 1
+            //             bgNoClass = 'ov-' + bgNo.toString();
+            //         }
+
+            //         if (logoPositionXSml > 1800 ) {
+            //             logoPositionXSml = 180
+            //         } else {
+            //             logoPositionXSml = logoPositionXSml + 270
+            //         }
+            // })
         }
 
      
@@ -312,9 +321,12 @@ $(document).ready(function () {
     }
 
     const introLogo = $('h1.main-logo .inline-icon');
-    const introLogoSml = $('h1.small-logo');
+    const introLogoSml = $('h1.small-logo .inline-icon');
     const introLogoSmlSvg = $('h1.small-logo span')
     const introAnim = gsap.timeline({
+        // onComplete: overlay
+    });
+    const introAnimSml = gsap.timeline({
         // onComplete: overlay
     });
     const introInfo = $('.info');
@@ -323,6 +335,7 @@ $(document).ready(function () {
         // onComplete: overlay
     });
     var h1Height = introLogo.height()
+    var h1HeightSml = introLogoSml.height()
     var h1Width = introLogoSmlSvg.width() + 30
     var windowWidth = $(window).width() 
 
@@ -335,19 +348,32 @@ $(document).ready(function () {
         .call(introBgClass)
     }
     introAnimFunction()
+
+    const introAnimFunctionSml = function () {
+        introAnimSml
+            .set(introLogoSml, { y: h1HeightSml })
+            .set(introInfo,{opacity: 0})
+            .to(introLogoSml, {y: 0, delay: .5, duration: .36})
+            .set(introInfo,{opacity: 1, delay: .36, duration: .36})
+            .call(introBgClass)
+        }
+       
     
     if ($(window).width() <= 700) {
-        introMovement
-            .set(introLogoSml, {x: 0})
-            .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+        // introMovement
+        //     .set(introLogoSml, {x: 0})
+        //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+
+        introAnimFunctionSml()
     }
        
 
     window.addEventListener('resize', function () { 
         if ($(window).width() <= 700) {
-            introMovement
-                .set(introLogoSml, {x: 0})
-                .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+            // introMovement
+            //     .set(introLogoSml, {x: 0})
+            //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
+            introAnimFunctionSml()
         }
     })
 
