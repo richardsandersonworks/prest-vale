@@ -129,14 +129,16 @@ $(document).ready(function () {
 
        
         $('.block').not('#' + sectionName).fadeOut(360, function () {
+            $("html, body").animate({ scrollTop: 0 }, 360);
             sectionId.fadeIn(720);
         })
         $('body').css('background-color',bgColor)
 
         if ($(window).width() <= 700) { 
             $('.about-nav').css('background-color',bgColor)
-            $("html, body").animate({ scrollTop: 0 }, 360);
+           
         }
+        
         $('.about-nav a').not('.'+sectionName).removeClass('focus')
         $(this).addClass('focus')
         
