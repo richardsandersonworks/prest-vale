@@ -194,23 +194,20 @@ $(document).ready(function () {
 
                 }, 1000)
             
-                // $(overlay).on('click',function() {
+                $(overlay).on('click',function() {
                     
-                //     $(this).fadeOut(300)
+                    $(this).fadeOut(320, function() {
+                        $(overlaySlide).removeClass('display')
+                        if (bgNo == 4) {
+                            bgNo = 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        } else {
+                            bgNo = bgNo + 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        }
+                    })
 
-                //     $(overlaySlide).removeClass('display')
-
-                //     if (bgNo == 4) {
-                //         bgNo = 1
-                //         bgNoClass = 'ov-' + bgNo.toString();
-                //     } else {
-                //         bgNo = bgNo + 1
-                //         bgNoClass = 'ov-' + bgNo.toString();
-                //     }
-
-                //     $(overlaySlide).addClass('display')
-                    
-                // })
+                })
             }
         })
     }
