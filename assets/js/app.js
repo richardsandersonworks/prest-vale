@@ -2,14 +2,11 @@ $(document).ready(function () {
 
     //   Dynamic Backgrounds
 
-
-
     let aboutWrap = '#about-wrap',
         aboutNav = '.about-nav';
 
     const observedSections = document.querySelectorAll(aboutWrap + ' .block h2')
    
-
     const dynamicBg = function () {
 
         const topViewport = window.pageYOffset
@@ -79,26 +76,38 @@ $(document).ready(function () {
 
     }
     
-    dynamicBg()
-
-    document.addEventListener('scroll', function() {
-        dynamicBg()
-    })
+    
 
     var infoLink = '.info-link';
 
-    $(infoLink).on('click', function (e) {
-        e.preventDefault();
-       
-        $('html').addClass('reveal');
+    const infoLinkClick = function () {
 
+        $(infoLink).on('click', function (e) {
+            e.preventDefault();
 
-        setTimeout(function () {
-            $('html').addClass('zwitch');
-        }, 360)
+            var introBg = $('.about-nav a.about-us').data('bg-color');
+        
+            $('html').addClass('reveal');
+            
+            // dynamicBg()
+            $('body').css('background-color', introBg)
+            // document.addEventListener('scroll', function() {
+            //     dynamicBg()
+            // })
 
-    })
+            if ($(window).width() <= 700) { 
+                
+                $('.about-nav').css('background-color', introBg)
+            }
 
+            setTimeout(function () {
+                $('html').addClass('zwitch');
+            }, 360)
+
+        })
+    }
+
+    infoLinkClick()
 
     $(aboutNav + ' a').click(function(e) {
 
@@ -107,14 +116,35 @@ $(document).ready(function () {
         let sectionName = $(this).data('anchor'),
             sectionId = $('#' + sectionName),
             currPadding = $(aboutWrap).css('padding-top'),
-            currPaddingNo = parseInt(currPadding,10); 
-            sectionScroll = sectionId.position();
-            sectionTop = parseInt(sectionScroll.top, 10);
-            sectionNewPos = sectionTop - currPaddingNo; 
+            currPaddingNo = parseInt(currPadding,10), 
+            sectionScroll = sectionId.position(),
+            sectionTop = parseInt(sectionScroll.top, 10),
+            sectionNewPos = sectionTop - currPaddingNo,
+            bgColor = $(this).data('bg-color');
 
-            console.log('without padding is ' + sectionTop + ' and with padding is ' + sectionNewPos)
 
-        $(window).scrollTo(sectionNewPos,{duration:360}, {easing:'ease'});
+            // console.log('without padding is ' + sectionTop + ' and with padding is ' + sectionNewPos)
+
+        // $(window).scrollTo(sectionNewPos,{duration:360}, {easing:'ease'});
+
+       
+        $('.block').not('#' + sectionName).fadeOut(360, function () {
+            sectionId.fadeIn(720);
+        })
+        $('body').css('background-color',bgColor)
+
+        if ($(window).width() <= 700) { 
+            $('.about-nav').css('background-color',bgColor)
+            $("html, body").animate({ scrollTop: 0 }, 360);
+        }
+        $('.about-nav a').not('.'+sectionName).removeClass('focus')
+        $(this).addClass('focus')
+        
+        if ($(window).width() <= 700) { 
+
+        }
+
+       
 
     });
 
@@ -129,48 +159,60 @@ $(document).ready(function () {
     var mainLogo = 'h1.main-logo';
     var smallLogo = 'h1.small-logo';
     var overlay =  '.overlay';
-    var overlaySlide = overlay + ' .ov-inner';
+   
 
     const overlayV1 = function() {
+        var bgNo = 1;
+        var bgNoClass = ' .ov-' + bgNo.toString();
 
-    $(mainLogo).on('mouseenter',function() {
-        $(overlay).fadeIn(300)
+        $(mainLogo).on('mouseenter',function() {
+            if ($(window).width() > 700 ) {
 
-       
-        setTimeout(function() {
-            $(overlay).fadeOut(300, function() {
-                $(overlaySlide).toggleClass('display')
-            })
-        },1000)
-        })
+                var overlaySlide = overlay + bgNoClass;
 
-        $(overlay).on('click',function() {
-            $(overlay).fadeOut(300, function() {
-                $(overlaySlide).toggleClass('display')
-            })
-        })
+                $(overlay).fadeIn(300)
+                console.log(bgNoClass)
+                 
+                $(overlaySlide).addClass('display')
 
-        if ($(window).width() <= 700 ) {
+                setTimeout(function() {
+                    $(overlay).fadeOut(320, function() {
 
-                $(smallLogo).on('click',function() {
-                    $(overlay).fadeIn(300)
-
-                    setTimeout(function() {
-                        $(overlay).fadeOut(300, function() {
-                            $(overlaySlide).toggleClass('display')
-                        })
-                    },1000)
-
-                })
-
-                $(overlay).on('click',function() {
-                    $(overlay).fadeOut(300, function() {
-                        $(overlaySlide).toggleClass('display')
+                        $(overlaySlide).removeClass('display')
+                        if (bgNo == 4) {
+                            bgNo = 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        } else {
+                            bgNo = bgNo + 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        }
                     })
-                })
 
-        }
+                   
+
+                }, 1000)
+            
+                // $(overlay).on('click',function() {
+                    
+                //     $(this).fadeOut(300)
+
+                //     $(overlaySlide).removeClass('display')
+
+                //     if (bgNo == 4) {
+                //         bgNo = 1
+                //         bgNoClass = 'ov-' + bgNo.toString();
+                //     } else {
+                //         bgNo = bgNo + 1
+                //         bgNoClass = 'ov-' + bgNo.toString();
+                //     }
+
+                //     $(overlaySlide).addClass('display')
+                    
+                // })
+            }
+        })
     }
+    
 
    
 
@@ -314,7 +356,6 @@ $(document).ready(function () {
 
     }
     
-    overlayV2();
     
     const introBgClass = function () {
         $('.intro-block').addClass('animate');
@@ -324,7 +365,7 @@ $(document).ready(function () {
     const introLogoSml = $('h1.small-logo .inline-icon');
     const introLogoSmlSvg = $('h1.small-logo span')
     const introAnim = gsap.timeline({
-        // onComplete: overlay
+        onComplete: overlayV1
     });
     const introAnimSml = gsap.timeline({
         // onComplete: overlay
@@ -353,7 +394,7 @@ $(document).ready(function () {
         introAnimSml
             .set(introLogoSml, { y: h1HeightSml })
             .set(introInfo,{opacity: 0})
-            .to(introLogoSml, {y: 0, delay: .5, duration: .36})
+            .to(introLogoSml, {y: 0, delay: .5, duration: .72})
             .set(introInfo,{opacity: 1, delay: .36, duration: .36})
             .call(introBgClass)
         }
@@ -387,6 +428,18 @@ $(document).ready(function () {
         setTimeout(function () {
             $('html').removeClass('zwitch');
             $("html, body").animate({ scrollTop: 0 }, 360);
+            $('.block').fadeOut();
+            $('.block.about-us-copy').fadeIn()
+           
+            var introBg = $('.about-nav a.about-us').data('bg-color');
+        
+            $('body').css('background-color', introBg)
+            $('.about-nav a').removeClass('focus')
+            $('.about-nav a.about-us').addClass('focus')
+
+            if ($(window).width() <= 700) { 
+                $('.about-nav').css('background-color', introBg)
+            }
         
         }, 360)
     })

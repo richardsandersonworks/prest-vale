@@ -15,7 +15,7 @@ html.splash {
         overflow: auto;
 
         body {
-            transition: background-color 360ms ease-in-out;
+            transition: background-color 1s ease-in-out;
         }
         
         .about-block {
@@ -45,24 +45,26 @@ html.splash {
         height: 100%;
         .inline-icon svg {
             width: 100vw;
-            height: 100vh;
+            // height: 100vh;
+            height: auto;
 
         }
 
         &.display {
             display: block;
         }
-
         &.ov-1 {
-            background-color: $yellow;
+            background-color: $green
         }
         &.ov-2 {
-            background-color: $green;
-        }
-        &.ov-3 {
             background-color: $blue;
         }
-
+        &.ov-3 {
+            background-color: $yellow;
+        }
+        &.ov-4 {
+            background-color: $orange;
+        }
 
         
     }
@@ -89,7 +91,7 @@ html.splash {
 
 .intro-block {
 
-    transition: background-color 12s ease-in-out;
+    transition: background-color 20s linear;
 
 
     background: $stone;
@@ -236,7 +238,7 @@ html.reveal {
     }
 
     .about-wrap {
-        
+        min-height: 100vh;
         padding-top: 20vh;
 
         @include flex(flex-start,center);
@@ -271,10 +273,12 @@ html.reveal {
             }
             .block {
                 margin-bottom: 120px;
-
-                &:last-of-type {
-                    margin-bottom: 90vh;
+                display: none;
+                
+                &:first-of-type {
+                    display: block;
                 }
+
             }
         }
 
@@ -309,6 +313,9 @@ html.reveal {
 
             display: block;
 
+                
+            min-height: 100vh;
+                
             .about-nav, .about-copy-wrap {
                 width: 100%;
 
@@ -328,11 +335,15 @@ html.reveal {
                 left: 0; 
 
                 
-                transition: background-color 360ms ease-in-out;
+                transition: background-color 1s ease-in-out;
 
             }
 
             .about-copy-wrap .block {
+
+                // min-height: 100vh;
+
+
                 &:last-of-type {
                     margin-bottom: 250px;
                 }
