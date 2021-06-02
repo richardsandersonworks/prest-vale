@@ -324,7 +324,14 @@ html.reveal {
                 }
 
                 #contact h2 {
+                    margin-top: 61px;
+                    max-width: 10em;
+
                     opacity: 1;
+                    font-family: $signifierLight;
+                    font-size: 24px;
+                    letter-spacing: 0;
+                    text-transform: none;
                 }
             }
 
