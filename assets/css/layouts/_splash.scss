@@ -44,9 +44,12 @@ html.splash {
         display: none;
         height: 100%;
         .inline-icon svg {
-            width: 100vw;
-            // height: 100vh;
-            height: auto;
+            // width: 100vw;
+            // // height: 100vh;
+            // height: auto;
+
+            height: 100vh;
+            width: auto;
 
         }
 
