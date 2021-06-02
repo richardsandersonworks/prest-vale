@@ -267,6 +267,10 @@ html.reveal {
 
         }
 
+        .about-nav a {
+            font-style: normal;
+        }
+
         .about-copy-wrap {
             h2 {
                 margin-bottom: 1em;
@@ -300,8 +304,10 @@ html.reveal {
             height: auto;
             z-index: $z100;
             padding-top: 24px;
-            a{
 
+
+            a{
+                font-style: normal;
                 font-family: $signifierLight;
                 font-size: 30px;
             }
@@ -324,7 +330,14 @@ html.reveal {
                 }
 
                 #contact h2 {
+                    margin-top: 61px;
+                    max-width: 10em;
+
                     opacity: 1;
+                    font-family: $signifierLight;
+                    font-size: 24px;
+                    letter-spacing: 0;
+                    text-transform: none;
                 }
             }
 
@@ -334,7 +347,6 @@ html.reveal {
                 top: 0;
                 left: 0; 
 
-                
                 transition: background-color 1s ease-in-out;
 
             }
