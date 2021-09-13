@@ -33,29 +33,21 @@
 
     <body class="{{ page.layout }}">
 
-        
-
-        <section class="overlay">
-            <div class="ov-1 ov-inner">
-                {%- include inline-icon.html svg="overlay-1.svg" -%} 
-            </div>
-
-            <div class="ov-2 ov-inner"> 
-                {%- include inline-icon.html svg="overlay-2.svg" -%} 
-            </div> 
-
-             <div class="ov-3 ov-inner">
-                {%- include inline-icon.html svg="overlay-3.svg" -%} 
-            </div>
- 
-            <div class="ov-4 ov-inner">
-                {%- include inline-icon.html svg="overlay-4.svg" -%} 
-            </div>
-
-        </section>
+         
 
 
-        <section class="intro-block wrapper">
+
+        <section class="intro-block wrapper"> 
+
+            <video playsinline autoplay muted loop class="bgvid-m" id="bgvid-m" poster="/assets/prest-vale-poster-m.png"> 
+                <source src="/assets/prest-vale-m.webm" type="video/webm">
+                <source src="/assets/prest-vale-m.mp4" type="video/mp4">
+            </video>
+
+            <video playsinline autoplay muted loop class="bgvid-s" id="bgvid-s" poster="/assets/prest-vale-poster-s.png"> 
+                <source src="/assets/prest-vale-s.webm" type="video/webm">
+                <source src="/assets/prest-vale-s.mp4" type="video/mp4">
+            </video>
 
             <h1 alt="Prest Vale Architects" class="main-logo">
                 {%- include inline-icon.html svg="icon-logo-main.svg" -%} 
@@ -89,14 +81,14 @@
             <div id="about-wrap" class="wrapper about-wrap">
 
                 <nav class="about-nav">
-                    <a href="#" class="about-us h2 focus" data-anchor="about-us" data-bg-color="#F0691F">About Us</a>
-                    <a href="#" class="approach h2" data-anchor="approach" data-bg-color="#2A8F5C">Our Approach</a>
-                    <a href="#" class="contact h2" data-anchor="contact" data-bg-color="#3E86BC">Contact</a>
+                    <a href="#" class="about-us h2 focus" data-anchor="about-us" data-bg-color="#C37861" data-color="#000">About Us</a>
+                    <a href="#" class="approach h2" data-anchor="approach" data-bg-color="#818A64" data-color="#000">Our Approach</a>
+                    <a href="#" class="contact h2" data-anchor="contact" data-bg-color="#e7bd5d" data-color="#000">Contact</a>
                 </nav>   
 
                 <div class="about-copy-wrap">
 
-                    <div id="about-us" class="about-us-copy block" data-anchor="about-us" data-bg-color="#F0691F">
+                    <div id="about-us" class="about-us-copy block" data-anchor="about-us" data-bg-color="#C37861" data-color="#000">
                         <h2 data-bg-color="#F0691F" data-anchor="about-us">About Us</h2>
 
                         <div class="copy">
@@ -104,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div id="approach" class="approach-copy block" data-anchor="approach" data-bg-color="#2A8F5C">
+                    <div id="approach" class="approach-copy block" data-anchor="approach" data-bg-color="#818A64" data-color="#000">
                         <h2 data-bg-color="#2A8F5C" data-anchor="approach">Our Approach</h2>
 
                         <div class="copy">
@@ -115,7 +107,7 @@
                     </div>
 
 
-                    <div id="contact" class="contact-copy block" data-anchor="contact" data-bg-color="#3E86BC">
+                    <div id="contact" class="contact-copy block" data-anchor="contact" data-bg-color="#e7bd5d" data-color="#000">
                         <h2 data-bg-color="#3E86BC" data-anchor="contact">
                             For all enquiries, please contact us at
                         </h2>
