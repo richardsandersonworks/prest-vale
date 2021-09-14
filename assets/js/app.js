@@ -1,5 +1,15 @@
 $(document).ready(function () {
 
+
+    if ($(window).width() <= 700) {
+        var currentVid = $('#bgvid-s')
+    } else {
+        var currentVid = $('#bgvid-m')
+    }
+
+
+
+
     //   Dynamic Backgrounds
 
     let aboutWrap = '#about-wrap',
@@ -35,13 +45,17 @@ $(document).ready(function () {
             if (distanceToSection > -200) {
 
                 const bgColor = section.dataset.bgColor;
-
                 // console.log(bgColor)
 
                 if (bgColor != '') {
                     // $('html').addClass('background-change')
                     // $('html').removeClass('background-default')
+
+
                     $('body').css('background-color',bgColor)
+               
+
+
                     // console.log('linear-gradient(180deg,'+ bgColor +'50%, rgba(240, 105, 31, 0) 100%)')
                     // setTimeout(function () { 
                     //     $('.about-block .close-link').css('background','linear-gradient(180deg,' + bgColor + ' 50%, rgba(240, 105, 31, 0) 100%)')
@@ -86,11 +100,13 @@ $(document).ready(function () {
             e.preventDefault();
 
             var introBg = $('.about-nav a.about-us').data('bg-color');
+            var infoCol = $('.about-nav a.about-us').data('color');
         
             $('html').addClass('reveal');
             
             // dynamicBg()
             $('body').css('background-color', introBg)
+            $('body').css('color', infoCol)
             // document.addEventListener('scroll', function() {
             //     dynamicBg()
             // })
@@ -120,7 +136,8 @@ $(document).ready(function () {
             sectionScroll = sectionId.position(),
             sectionTop = parseInt(sectionScroll.top, 10),
             sectionNewPos = sectionTop - currPaddingNo,
-            bgColor = $(this).data('bg-color');
+            bgColor = $(this).data('bg-color'),
+            col = $(this).data('color');
 
 
             // console.log('without padding is ' + sectionTop + ' and with padding is ' + sectionNewPos)
@@ -132,11 +149,15 @@ $(document).ready(function () {
             $("html, body").animate({ scrollTop: 0 }, 360);
             sectionId.fadeIn(720);
         })
+
+        // $('body').css('background-color',bgColor)
+
         $('body').css('background-color',bgColor)
+        $('body').css('color', col)
 
         if ($(window).width() <= 700) { 
             $('.about-nav').css('background-color',bgColor)
-           
+            $('.about-nav').css('color', col)
         }
         
         $('.about-nav a').not('.'+sectionName).removeClass('focus')
@@ -357,7 +378,7 @@ $(document).ready(function () {
     
     
     const introBgClass = function () {
-        $('.intro-block').addClass('animate');
+        $('.intro-block').addClass('video');
     }
 
     const introLogo = $('h1.main-logo .inline-icon');
@@ -378,21 +399,37 @@ $(document).ready(function () {
     var h1HeightSml = introLogoSml.height()
     var h1Width = introLogoSmlSvg.width() + 30
     var windowWidth = $(window).width() 
+    var introBlock = '.intro-block'
+
+
+
 
     const introAnimFunction = function () {
+        if ($(window).width() <= 700) {
+            var currentVid = $('#bgvid-s')
+        } else {
+            var currentVid = $('#bgvid-m')
+        }
     introAnim
+        // .set(currentVid, {opacity: 0})
         .set(introLogo, { y: h1Height })
         .set(introInfo,{opacity: 0})
+        // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
         .to(introLogo, {y: 0, delay: .5, duration: .36})
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
         .call(introBgClass)
     }
     introAnimFunction()
 
+
     const introAnimFunctionSml = function () {
+
+
         introAnimSml
+            // .set(currentVid, {opacity: 0})
             .set(introLogoSml, { y: h1HeightSml })
             .set(introInfo,{opacity: 0})
+            // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
             .to(introLogoSml, {y: 0, delay: .5, duration: .72})
             .set(introInfo,{opacity: 1, delay: .36, duration: .36})
             .call(introBgClass)
@@ -415,6 +452,7 @@ $(document).ready(function () {
             //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
             introAnimFunctionSml()
         }
+
     })
 
 
@@ -431,8 +469,11 @@ $(document).ready(function () {
             $('.block.about-us-copy').fadeIn()
            
             var introBg = $('.about-nav a.about-us').data('bg-color');
-        
+            var introCol = $('.about-nav a.about-us').data('color');
+
             $('body').css('background-color', introBg)
+            $('body').css('color', introCol)
+             
             $('.about-nav a').removeClass('focus')
             $('.about-nav a.about-us').addClass('focus')
 

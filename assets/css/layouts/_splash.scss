@@ -6,6 +6,11 @@
     100% { background-color: $stone; }
 }
 
+@keyframes fadeIn {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
 
 html.splash {
     background: $stone;
@@ -96,6 +101,9 @@ html.splash {
 
     transition: background-color 20s linear;
 
+    &.wrapper {
+        // padding: 40px 5px;
+    }
 
     background: $stone;
 
@@ -109,8 +117,30 @@ html.splash {
     position: relative;
     z-index: $z100;
 
-    @include flex(center,center);
+    @include flex(center,flex-start);
     flex-direction: column;
+
+
+    video {
+
+     
+
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0; 
+
+        animation: fadeIn 1200ms cubic-bezier(0.68,-0.55,0.27,1.55);
+
+        &.bgvid-s {
+            display: none;
+        } 
+
+
+    
+    }
 
     h1 {
         width: 100%;
@@ -118,10 +148,17 @@ html.splash {
 
         &.main-logo {
             overflow: hidden;
+
+            path {
+                fill: $stone;
+            }
         }
 
         &.small-logo {
             display: none;
+            path {
+                fill: $stone;
+            }
         }
 
 
@@ -168,6 +205,7 @@ html.splash {
 
         .info-link {
             width: 100%;
+            color: $stone;
         }
         transition: opacity ease-in 360ms; 
 
@@ -185,6 +223,18 @@ html.splash {
     @include mq($break-m) {
 
         height: 100%;
+        @include flex(flex-start,flex-start);
+        video {
+
+            &.bgvid-m {
+                display: none;
+            } 
+            &.bgvid-s {
+                display: block;
+            } 
+    
+        }
+
 
         h1 {
             &.small-logo {
