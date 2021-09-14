@@ -378,7 +378,7 @@ $(document).ready(function () {
     
     
     const introBgClass = function () {
-        $('.intro-block').addClass('animate');
+        $('.intro-block').addClass('video');
     }
 
     const introLogo = $('h1.main-logo .inline-icon');
