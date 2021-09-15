@@ -1,12 +1,20 @@
 $(document).ready(function () {
 
 
-    if ($(window).width() <= 700) {
-        var currentVid = $('#bgvid-s')
-    } else {
-        var currentVid = $('#bgvid-m')
+    let mql = window.matchMedia('(max-width: 700px)'),
+        vid = $('#js-vid');
+
+    const videoFunct = function () {
+        if (mql.matches == true) {
+            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+            console.log('mobile video')
+        } else {
+            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+            console.log('desktop video')
+        }
     }
 
+    videoFunct()
 
 
 
@@ -452,6 +460,8 @@ $(document).ready(function () {
             //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
             introAnimFunctionSml()
         }
+
+        videoFunct()
 
     })
 
