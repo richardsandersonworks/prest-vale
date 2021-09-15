@@ -6,23 +6,15 @@ $(document).ready(function () {
 
     const videoFunct = function () {
 
-            
-
         if (mql.matches == true) {
           
             vid.html('<source src="/assets/prest-vale-xxs-muted.webmsd.webm" type="video/webm"><source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
 
-            
-
         } else {
-          
             vid.html('<source src="/assets/prest-vale-s-muted.webmhd.webm" type="video/webm"><source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
-
         }
-
-        
     }
 
     videoFunct()
