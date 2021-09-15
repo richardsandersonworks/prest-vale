@@ -6,10 +6,10 @@ $(document).ready(function () {
 
     const videoFunct = function () {
         if (mql.matches == true) {
-            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-xxs-muted.webmsd.webm" type="video/webm"><source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
         } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-s-muted.webmhd.webm" type="video/webm"><source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
         }
     }
@@ -420,8 +420,8 @@ $(document).ready(function () {
         }
     introAnim
         // .set(currentVid, {opacity: 0})
-        .set(introLogo, { y: h1Height })
-        .set(introInfo,{opacity: 0})
+        .set(introLogo, {y: h1Height})
+        .set(introLogo, {opacity: 1})
         // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
         .to(introLogo, {y: 0, delay: .5, duration: .36})
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
@@ -437,6 +437,7 @@ $(document).ready(function () {
             // .set(currentVid, {opacity: 0})
             .set(introLogoSml, { y: h1HeightSml })
             .set(introInfo,{opacity: 0})
+            .set(introLogoSml, {opacity: 1})
             // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
             .to(introLogoSml, {y: 0, delay: .5, duration: .72})
             .set(introInfo,{opacity: 1, delay: .36, duration: .36})
