@@ -37,8 +37,7 @@ $(document).ready(function () {
 
     const videoPlay = function(e) {
         video.addEventListener('canplaythrough', (e) => {
-            console.log('I think I can play through the entire ' +
-            'video without ever having to stop to buffer.');
+            console.log('Video buffered and can stream');
             
             playVideo();
           
