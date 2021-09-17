@@ -1,9 +1,9 @@
 @keyframes color {
-    0% { background-color: $stone; }
+    0% { background-color: $royal; }
     25% { background-color: $clay;}
     50% { background-color: $forest;}
     75% { background-color: $mustard; }
-    100% { background-color: $stone; }
+    100% { background-color: $royal; }
 }
 
 @keyframes fadeIn {
@@ -100,12 +100,15 @@ html.splash {
 .intro-block {
 
     transition: background-color 20s linear;
+    background-image: url('/assets/prest-vale-poster-s.jpg');
+    background-size: cover;
+    background-position: center;
 
     &.wrapper {
         // padding: 40px 5px;
     }
 
-    background: $royal;
+    background-color: $royal;
 
     &.animate {
         animation: color 12s cubic-bezier(0.68,-0.55,0.27,1.55) infinite;
@@ -123,7 +126,7 @@ html.splash {
 
     video {
 
-     
+        opacity: 0;
 
         object-fit: cover;
         width: 100vw;
@@ -426,5 +429,11 @@ html.reveal {
         }
     }
 
+}
+
+@include mq($break-m) {
+    .intro-block {
+        background-image: url('/assets/prest-vale-poster-s.jpg');
+    }
 }
 

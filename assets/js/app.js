@@ -1,25 +1,76 @@
 $(document).ready(function () {
 
+  
+    const introBgClass = function () {
+        $('.intro-block').addClass('animate');
+        console.log('add animation')
+    }
+
+    const removeBgClass = function () {
+        $('.intro-block').removeClass('animate');
+        console.log('remove animation')
+    }
+
 
     let mql = window.matchMedia('(max-width: 700px)'),
         vid = $('#js-vid');
 
+    const video = document.querySelector('video');
     const videoFunct = function () {
-
         if (mql.matches == true) {
-          
-            vid.html('<source src="/assets/prest-vale-xxs-muted.webmsd.webm" type="video/webm"><source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
-
+            vid.prop('playsinline',true)
+            vid.prop('muted',true)
+            vid.prop('autoplay',true)
+            vid.prop('loop',true)
         } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.webmhd.webm" type="video/webm"><source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
+            vid.prop('playsinline',true)
+            vid.prop('muted',true)
+            vid.prop('autoplay',true)
+            vid.prop('loop',true)
         }
     }
 
-    videoFunct()
+    async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
+    }
+
+    const videoPlay = function(e) {
+        video.addEventListener('canplaythrough', (e) => {
+            console.log('Video buffered and can stream');
+            
+            playVideo();
+          
+            
+            if (video.paused) {
+                playVideo();
+            } else {
+                console.log('video is not paused')
+            }
+
+            vid.fadeTo(720, 1);
+        });
+    }
 
 
+  
+
+
+    // Run Colour animation
+    // Choose Correct Video Format
+    // Video fully buffered
+    // Reveal Video and Play
+    // Hide colour animation
+
+ 
 
     //   Dynamic Backgrounds
 
@@ -387,10 +438,6 @@ $(document).ready(function () {
 
     }
     
-    
-    const introBgClass = function () {
-        $('.intro-block').addClass('video');
-    }
 
     const introLogo = $('h1.main-logo .inline-icon');
     const introLogoSml = $('h1.small-logo .inline-icon');
@@ -406,6 +453,7 @@ $(document).ready(function () {
         repeat: -1,
         // onComplete: overlay
     });
+    const introVideo = gsap.timeline({})
     var h1Height = introLogo.height()
     var h1HeightSml = introLogoSml.height()
     var h1Width = introLogoSmlSvg.width() + 30
@@ -416,11 +464,6 @@ $(document).ready(function () {
 
 
     const introAnimFunction = function () {
-        if ($(window).width() <= 700) {
-            var currentVid = $('#bgvid-s')
-        } else {
-            var currentVid = $('#bgvid-m')
-        }
     introAnim
         // .set(currentVid, {opacity: 0})
         .set(introLogo, {y: h1Height})
@@ -428,47 +471,48 @@ $(document).ready(function () {
         // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
         .to(introLogo, {y: 0, delay: .5, duration: .36})
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
-        .call(introBgClass)
+        // .call(introBgClass)
     }
+
     introAnimFunction()
 
 
     const introAnimFunctionSml = function () {
-
-
-        introAnimSml
-            // .set(currentVid, {opacity: 0})
-            .set(introLogoSml, { y: h1HeightSml })
-            .set(introInfo,{opacity: 0})
-            .set(introLogoSml, {opacity: 1})
-            // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
-            .to(introLogoSml, {y: 0, delay: .5, duration: .72})
-            .set(introInfo,{opacity: 1, delay: .36, duration: .36})
-            .call(introBgClass)
-        }
+    introAnimSml
+        // .set(currentVid, {opacity: 0})
+        .set(introLogoSml, { y: h1HeightSml })
+        .set(introInfo,{opacity: 0})
+        .set(introLogoSml, {opacity: 1})
+        // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
+        .to(introLogoSml, {y: 0, delay: .5, duration: .72})
+        .set(introInfo,{opacity: 1, delay: .36, duration: .36})
+        // .call(introBgClass)
+    }
        
     
     if ($(window).width() <= 700) {
-        // introMovement
-        //     .set(introLogoSml, {x: 0})
-        //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
-
         introAnimFunctionSml()
     }
        
 
+   
+
+
+    const introVideoFunc = function () {
+    introVideo
+        .call(videoFunct)
+        .call(videoPlay)
+        // .call(removeBgClass)
+    }
+
+    introVideoFunc()
+
     window.addEventListener('resize', function () { 
         if ($(window).width() <= 700) {
-            // introMovement
-            //     .set(introLogoSml, {x: 0})
-            //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
             introAnimFunctionSml()
         }
-
-        videoFunct()
-
+        introVideoFunc()
     })
-
 
     var closeLink = '.close';
 
@@ -476,6 +520,7 @@ $(document).ready(function () {
         e.preventDefault();
         $('html').removeClass('reveal');
         introAnimFunction()
+        
         setTimeout(function () {
             $('html').removeClass('zwitch');
             $("html, body").animate({ scrollTop: 0 }, 360);
