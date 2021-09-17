@@ -46,7 +46,7 @@ $(document).ready(function () {
             if (video.paused) {
                 playVideo();
             } else {
-            console.log('is not playing')
+            console.log('video is not paused')
             }
 
             vid.fadeTo(720, 1);
