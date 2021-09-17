@@ -18,23 +18,43 @@ $(document).ready(function () {
     const video = document.querySelector('video');
     const videoFunct = function () {
         if (mql.matches == true) {
-            vid.html('<source src="/assets/prest-vale-xxs-muted.webmsd.webm" type="video/webm"><source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
         } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.webmhd.webm" type="video/webm"><source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
         }
     }
+
+    async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
+    }
+
     const videoPlay = function(e) {
         video.addEventListener('canplaythrough', (e) => {
             console.log('I think I can play through the entire ' +
             'video without ever having to stop to buffer.');
+            
+            playVideo();
+          
+            
+            if (video.paused) {
+                playVideo();
+            } else {
+            console.log('is not playing')
+            }
+
             vid.fadeTo(720, 1);
         });
     }
 
 
-
+  
 
 
     // Run Colour animation
