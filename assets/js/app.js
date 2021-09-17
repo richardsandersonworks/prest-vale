@@ -424,11 +424,6 @@ $(document).ready(function () {
 
 
     const introAnimFunction = function () {
-        if ($(window).width() <= 700) {
-            var currentVid = $('#bgvid-s')
-        } else {
-            var currentVid = $('#bgvid-m')
-        }
     introAnim
         // .set(currentVid, {opacity: 0})
         .set(introLogo, {y: h1Height})
@@ -438,43 +433,33 @@ $(document).ready(function () {
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
         .call(introBgClass)
     }
+
     introAnimFunction()
 
 
     const introAnimFunctionSml = function () {
-
-
-        introAnimSml
-            // .set(currentVid, {opacity: 0})
-            .set(introLogoSml, { y: h1HeightSml })
-            .set(introInfo,{opacity: 0})
-            .set(introLogoSml, {opacity: 1})
-            // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
-            .to(introLogoSml, {y: 0, delay: .5, duration: .72})
-            .set(introInfo,{opacity: 1, delay: .36, duration: .36})
-            .call(introBgClass)
-        }
+    introAnimSml
+        // .set(currentVid, {opacity: 0})
+        .set(introLogoSml, { y: h1HeightSml })
+        .set(introInfo,{opacity: 0})
+        .set(introLogoSml, {opacity: 1})
+        // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
+        .to(introLogoSml, {y: 0, delay: .5, duration: .72})
+        .set(introInfo,{opacity: 1, delay: .36, duration: .36})
+        .call(introBgClass)
+    }
        
     
     if ($(window).width() <= 700) {
-        // introMovement
-        //     .set(introLogoSml, {x: 0})
-        //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
-
         introAnimFunctionSml()
     }
        
 
     window.addEventListener('resize', function () { 
         if ($(window).width() <= 700) {
-            // introMovement
-            //     .set(introLogoSml, {x: 0})
-            //     .to (introLogoSml, {x: -h1Width, duration: 6, ease: "linear"})
             introAnimFunctionSml()
         }
-
         videoFunct()
-
     })
 
 
