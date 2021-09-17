@@ -480,8 +480,9 @@ $(document).ready(function () {
     introVideo
         .call(videoFunct)
         .call(videoPlay)
-        .set(video, {display: block, duration: .72})
+        .set(video, {display: 'block', duration: .72})
     }
+
     introVideoFunc()
 
     var closeLink = '.close';
