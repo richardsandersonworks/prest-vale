@@ -422,6 +422,9 @@ $(document).ready(function () {
         repeat: -1,
         // onComplete: overlay
     });
+    const introVideo = gsap.timeline({
+        onComplete: removeBgClass
+    })
     var h1Height = introLogo.height()
     var h1HeightSml = introLogoSml.height()
     var h1Width = introLogoSmlSvg.width() + 30
@@ -476,7 +479,6 @@ $(document).ready(function () {
         .call(videoFunct)
         .call(videoPlay)
         .set(video, {opacity: 1, duration: .72})
-        .call(removeBgClass)
     }
     introVideoFunc()
 
