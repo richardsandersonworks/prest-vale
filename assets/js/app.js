@@ -445,7 +445,7 @@ $(document).ready(function () {
         // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
         .to(introLogo, {y: 0, delay: .5, duration: .36})
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
-        .call(introBgClass)
+        // .call(introBgClass)
     }
 
     introAnimFunction()
@@ -460,7 +460,7 @@ $(document).ready(function () {
         // .to(currentVid, {opacity: 1, delay: .5, duration: .36})
         .to(introLogoSml, {y: 0, delay: .5, duration: .72})
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
-        .call(introBgClass)
+        // .call(introBgClass)
     }
        
     
@@ -481,7 +481,7 @@ $(document).ready(function () {
     introVideo
         .call(videoFunct)
         .call(videoPlay)
-        .call(removeBgClass)
+        // .call(removeBgClass)
     }
 
     introVideoFunc()

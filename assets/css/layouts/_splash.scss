@@ -3,7 +3,7 @@
     25% { background-color: $clay;}
     50% { background-color: $forest;}
     75% { background-color: $mustard; }
-    100% { background-color: $stone; }
+    100% { background-color: $royal; }
 }
 
 @keyframes fadeIn {
@@ -100,6 +100,9 @@ html.splash {
 .intro-block {
 
     transition: background-color 20s linear;
+    background-image: url('/assets/prest-vale-poster-m.jpg');
+    background-size: cover;
+    background-position: center;
 
     &.wrapper {
         // padding: 40px 5px;
