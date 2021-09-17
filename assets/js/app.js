@@ -27,7 +27,10 @@ $(document).ready(function () {
     }
     const videoPlay = function(e) {
         video.addEventListener('canplaythrough', (e) => {
-            console.log('display video and play without buffering');
+            console.log('I think I can play through the entire ' +
+            'video without ever having to stop to buffer.');
+
+            vid.fadeIn(720)
         });
     }
 
@@ -478,7 +481,6 @@ $(document).ready(function () {
     introVideo
         .call(videoFunct)
         .call(videoPlay)
-        .set()
         .call(removeBgClass)
     }
 
