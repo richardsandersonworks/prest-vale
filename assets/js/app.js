@@ -20,9 +20,17 @@ $(document).ready(function () {
         if (mql.matches == true) {
             vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
+            vid.prop('playsinline',true)
+            vid.prop('muted',true)
+            vid.prop('autoplay',true)
+            vid.prop('loop',true)
         } else {
             vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
+            vid.prop('playsinline',true)
+            vid.prop('muted',true)
+            vid.prop('autoplay',true)
+            vid.prop('loop',true)
         }
     }
 
@@ -45,7 +53,7 @@ $(document).ready(function () {
             if (video.paused) {
                 playVideo();
             } else {
-            console.log('video is not paused')
+                console.log('video is not paused')
             }
 
             vid.fadeTo(720, 1);
