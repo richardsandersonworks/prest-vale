@@ -30,7 +30,7 @@ $(document).ready(function () {
             console.log('I think I can play through the entire ' +
             'video without ever having to stop to buffer.');
 
-            $(this).fadeIn(720)
+            vid.fadeIn(720)
         });
     }
 
