@@ -3,10 +3,12 @@ $(document).ready(function () {
   
     const introBgClass = function () {
         $('.intro-block').addClass('animate');
+        console.log('add animation')
     }
 
     const removeBgClass = function () {
         $('.intro-block').removeClass('animate');
+        console.log('remove animation')
     }
 
 
@@ -478,7 +480,7 @@ $(document).ready(function () {
     introVideo
         .call(videoFunct)
         .call(videoPlay)
-        .set(video, {opacity: 1, duration: .72})
+        .set(video, {display: block, duration: .72})
     }
     introVideoFunc()
 
