@@ -29,9 +29,12 @@ $(document).ready(function () {
         video.addEventListener('canplaythrough', (e) => {
             console.log('I think I can play through the entire ' +
             'video without ever having to stop to buffer.');
-           
+
+            video.fadeIn(720)
         });
     }
+
+
 
 
 
@@ -424,9 +427,7 @@ $(document).ready(function () {
         repeat: -1,
         // onComplete: overlay
     });
-    const introVideo = gsap.timeline({
-        onComplete: removeBgClass
-    })
+    const introVideo = gsap.timeline({})
     var h1Height = introLogo.height()
     var h1HeightSml = introLogoSml.height()
     var h1Width = introLogoSmlSvg.width() + 30
@@ -480,7 +481,7 @@ $(document).ready(function () {
     introVideo
         .call(videoFunct)
         .call(videoPlay)
-        .set(video, {display: 'block', duration: .72})
+        .call(removeBgClass)
     }
 
     introVideoFunc()
