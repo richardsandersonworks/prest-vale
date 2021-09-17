@@ -495,12 +495,7 @@ $(document).ready(function () {
     }
        
 
-    window.addEventListener('resize', function () { 
-        if ($(window).width() <= 700) {
-            introAnimFunctionSml()
-        }
-        
-    })
+   
 
 
     const introVideoFunc = function () {
@@ -511,6 +506,13 @@ $(document).ready(function () {
     }
 
     introVideoFunc()
+    
+    window.addEventListener('resize', function () { 
+        if ($(window).width() <= 700) {
+            introAnimFunctionSml()
+        }
+        introVideoFunc()
+    })
 
     var closeLink = '.close';
 
