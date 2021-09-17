@@ -402,10 +402,6 @@ $(document).ready(function () {
 
     }
     
-    
-    const introBgClass = function () {
-        $('.intro-block').addClass('animate');
-    }
 
     const introLogo = $('h1.main-logo .inline-icon');
     const introLogoSml = $('h1.small-logo .inline-icon');
