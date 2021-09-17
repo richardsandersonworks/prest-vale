@@ -5,6 +5,10 @@ $(document).ready(function () {
         $('.intro-block').addClass('animate');
     }
 
+    const removeBgClass = function () {
+        $('.intro-block').removeClass('animate');
+    }
+
 
     let mql = window.matchMedia('(max-width: 700px)'),
         vid = $('#js-vid');
@@ -23,10 +27,11 @@ $(document).ready(function () {
         video.addEventListener('canplaythrough', (e) => {
             console.log('I think I can play through the entire ' +
             'video without ever having to stop to buffer.');
-            $(this).fadeIn()
-            $('.intro-block').removeClass('animate');
+           
         });
     }
+
+
 
     // Run Colour animation
     // Choose Correct Video Format
@@ -467,11 +472,12 @@ $(document).ready(function () {
 
 
     const introVideoFunc = function () {
-        introVideo
-            .call(videoFunct)
-            .call(videoPlay)
+    introVideo
+        .call(videoFunct)
+        .call(videoPlay)
+        .set(video, {opacity: 1, duration: .72})
+        .call(removeBgClass)
     }
-    
     introVideoFunc()
 
     var closeLink = '.close';
