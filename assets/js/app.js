@@ -29,8 +29,7 @@ $(document).ready(function () {
         video.addEventListener('canplaythrough', (e) => {
             console.log('I think I can play through the entire ' +
             'video without ever having to stop to buffer.');
-            video.play()
-            vid.fadeIn(720)
+            vid.fadeTo(720, 1);
         });
     }
 
