@@ -100,7 +100,7 @@ html.splash {
 .intro-block {
 
     transition: background-color 20s linear;
-    background-image: url('/assets/prest-vale-poster-m.jpg');
+    background-image: url('/assets/prest-vale-poster-s.jpg');
     background-size: cover;
     background-position: center;
 
@@ -430,5 +430,11 @@ html.reveal {
         }
     }
 
+}
+
+@include mq($break-m) {
+    .intro-block {
+        background-image: url('/assets/prest-vale-poster-s.jpg');
+    }
 }
 
