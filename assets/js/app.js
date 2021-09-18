@@ -90,6 +90,8 @@ $(document).ready(function () {
             }
 
             vid.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')
            
         });
     }
@@ -306,7 +308,6 @@ $(document).ready(function () {
         introVideo
             .call(videoFunct)
             .call(videoPlay)
-            .set(placeholder, {opacity: 0, delay: .72})
             // .call(removeBgClass)
     }
     
@@ -322,7 +323,7 @@ $(document).ready(function () {
 
     window.addEventListener('resize', function () {     
         introVideoFunc()
-
+        $(introLogo).fadeTo(720, 1)
         if ($(window).width() <= 700) {
             introAnimFunctionSml()
         } 
