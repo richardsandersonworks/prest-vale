@@ -130,7 +130,7 @@ $(document).ready(function () {
             sectionId.fadeIn(720);
         })
 
-        $('body').css('background-color',bgColor).css('color', col)
+        $('body').css('background-color', bgColor).css('color', col)
  
         if ($(window).width() <= 700) { 
             $('.about-nav').css('background-color',bgColor).css('color', col)
