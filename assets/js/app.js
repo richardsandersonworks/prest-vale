@@ -322,6 +322,10 @@ $(document).ready(function () {
 
     window.addEventListener('resize', function () {     
         introVideoFunc()
+
+        if ($(window).width() <= 700) {
+            introAnimFunctionSml()
+        } 
     })
 
 
