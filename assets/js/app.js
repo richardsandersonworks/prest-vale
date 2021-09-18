@@ -11,7 +11,8 @@ $(document).ready(function () {
         introLogoSml = $('h1.small-logo .inline-icon');
         introLogoSmlSvg = $('h1.small-logo span'),
         introInfo = $('.info'),
-        closeLink = '.close';
+        closeLink = '.close', 
+        placeholder = '#placeholder';
     ;
 
     // Timelines
@@ -89,6 +90,7 @@ $(document).ready(function () {
             }
 
             vid.fadeTo(720, 1);
+            $(placeholder).fadeOut()
         });
     }
 
