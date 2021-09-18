@@ -506,7 +506,7 @@ $(document).ready(function () {
     }
 
     introVideoFunc()
-    
+
     window.addEventListener('resize', function () { 
         if ($(window).width() <= 700) {
             introAnimFunctionSml()
@@ -520,6 +520,7 @@ $(document).ready(function () {
         e.preventDefault();
         $('html').removeClass('reveal');
         introAnimFunction()
+        
         setTimeout(function () {
             $('html').removeClass('zwitch');
             $("html, body").animate({ scrollTop: 0 }, 360);
