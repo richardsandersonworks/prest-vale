@@ -323,7 +323,7 @@ $(document).ready(function () {
 
     window.addEventListener('resize', function () {     
         introVideoFunc()
-
+        $(introLogo).fadeTo(720, 1)
         if ($(window).width() <= 700) {
             introAnimFunctionSml()
         } 
