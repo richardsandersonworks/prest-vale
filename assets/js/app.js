@@ -90,6 +90,7 @@ $(document).ready(function () {
             }
 
             vid.fadeTo(720, 1);
+            placeholder.fadeTo(360, 0)
            
         });
     }
@@ -306,7 +307,6 @@ $(document).ready(function () {
         introVideo
             .call(videoFunct)
             .call(videoPlay)
-            .set(placeholder, {display: 'none'})
             // .call(removeBgClass)
     }
     
