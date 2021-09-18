@@ -115,7 +115,7 @@ html.splash {
         // padding: 40px 5px;
     }
 
-    background-color: $royal;
+    // background-color: $royal;
 
     &.animate {
         animation: color 12s cubic-bezier(0.68,-0.55,0.27,1.55) infinite;
@@ -142,6 +142,7 @@ html.splash {
         background-image: url('/assets/prest-vale-poster-l.jpg');
         background-size: cover;
         background-position: center;
+        background-color: $royal;
         
         animation: fadeIn 120ms cubic-bezier(0.68,-0.55,0.27,1.55);
 
