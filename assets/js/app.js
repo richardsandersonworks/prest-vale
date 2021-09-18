@@ -104,9 +104,7 @@ $(document).ready(function () {
         $('body').css('background-color', introBg).css('color', infoCol)
         
         if ($(window).width() <= 700) { 
-            $(document).on('scroll', function() {
-                $(aboutNav).css('background-color', introBg)
-            })
+            $(aboutNav).css('background-color', introBg)
         }
 
         setTimeout(function () {
