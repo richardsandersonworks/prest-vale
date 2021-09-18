@@ -104,7 +104,9 @@ $(document).ready(function () {
         $('body').css('background-color', introBg).css('color', infoCol)
         
         if ($(window).width() <= 700) { 
-            $('.about-nav').css('background-color', introBg)
+            $(document).on('scroll', function() {
+                $(aboutNav).css('background-color', introBg)
+            })
         }
 
         setTimeout(function () {
@@ -116,6 +118,7 @@ $(document).ready(function () {
     // About Headings Click
 
     $(aboutNav + ' a').click(function(e) {
+
         e.preventDefault()
 
         let sectionName = $(this).data('anchor'),
