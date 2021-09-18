@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     // Timelines
     const introAnim = gsap.timeline({
-        onComplete: overlayV1
+        // onComplete: overlayV1
     });
     const introAnimSml = gsap.timeline({
     });
@@ -173,6 +173,110 @@ $(document).ready(function () {
     if (mql.matches == true) {
         $('a.close').html('&times;')
     } 
+
+    const overlayV1 = function() {
+        var bgNo = 1;
+        var bgNoClass = ' .ov-' + bgNo.toString();
+
+        $(mainLogo).on('mouseenter',function() {
+            if ($(window).width() > 700 ) {
+                var overlaySlide = overlay + bgNoClass;
+
+                $(overlay).fadeIn(300)
+                console.log(bgNoClass)
+                 
+                $(overlaySlide).addClass('display')
+
+                setTimeout(function() {
+                    $(overlay).fadeOut(320, function() {
+
+                        $(overlaySlide).removeClass('display')
+                        if (bgNo == 4) {
+                            bgNo = 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        } else {
+                            bgNo = bgNo + 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        }
+                    })
+                }, 1000)
+            
+                $(overlay).on('click',function() {   
+                    $(this).fadeOut(320, function() {
+                        $(overlaySlide).removeClass('display')
+                        if (bgNo == 4) {
+                            bgNo = 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        } else {
+                            bgNo = bgNo + 1
+                            bgNoClass = ' .ov-' + bgNo.toString();
+                        }
+                    })
+                })
+            }
+        })
+    }
+        
+    const overlayV2 = function() {
+        let mainLogoSml = '.small-logo',
+            logoPosition = () => {
+                return 1 * Math.random() * 100
+            };
+        var bgNo = 1;
+        var bgNoClass = 'ov-' + bgNo.toString();
+        var logoPositionXSml = 0;
+
+        
+        $(mainLogo).on('mouseenter', function() {
+            
+        console.log(bgNo)
+        var logoPositionX = logoPosition();
+        
+        $(this)
+            .addClass('hover')
+            .addClass(bgNoClass)        
+            .css('transform','scale(1.7)')
+        ;
+    
+        $(mainLogo + ' .inline-icon').css('transform', 'translateX(-'+logoPositionX+'%)')
+
+        setTimeout(function() {
+            $(mainLogo)
+                .removeClass('hover')
+                .removeClass(bgNoClass)
+                .css('transform','none')
+        
+                $(mainLogo + ' .inline-icon').css('transform','none')
+
+                if (bgNo == 4) {
+                    bgNo = 1
+                    bgNoClass = 'ov-' + bgNo.toString();
+                } else {
+                    bgNo = bgNo + 1
+                    bgNoClass = 'ov-' + bgNo.toString();
+                }
+            },1000)
+        })
+
+        $(mainLogo).on('click',function() {
+            $(this)
+                .removeClass('hover')
+                .removeClass(bgNoClass)
+                .css('transform','none')
+            $(mainLogo + ' .inline-icon').css('transform','none')
+
+            if (bgNo == 4) {
+                bgNo = 1
+                bgNoClass = 'ov-' + bgNo.toString();
+            } else {
+                bgNo = bgNo + 1
+                bgNoClass = 'ov-' + bgNo.toString();
+            }
+        }) 
+    }
+    
+
+    
 
     const introAnimFunction = function () {
         introAnim
