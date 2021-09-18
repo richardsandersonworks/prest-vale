@@ -306,7 +306,7 @@ $(document).ready(function () {
         introVideo
             .call(videoFunct)
             .call(videoPlay)
-            .set(placeholder, {display: 'none', delay: .72})
+            .set(placeholder, {opacity: 0, delay: .72})
             // .call(removeBgClass)
     }
     
