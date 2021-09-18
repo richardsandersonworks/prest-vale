@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     // Selectors 
     let introBlock = '.intro-block',
-        introBlock = '.intro-block',
         aboutWrap = '#about-wrap',
         aboutNav = '.about-nav',
         infoLink = '.info-link',
