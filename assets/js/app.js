@@ -131,9 +131,11 @@ $(document).ready(function () {
         })
 
         $('body').css('background-color', bgColor).css('color', col)
- 
+        
+
         if ($(window).width() <= 700) { 
-            $('.about-nav').css('background-color',bgColor).css('color', col)
+            $(aboutNav).css('background-color',bgColor).css('color', col)
+            $('.about-block').css('background-color',bgColor).css('color', col)
         }
         
         $('.about-nav a').not('.'+sectionName).removeClass('focus')
