@@ -90,7 +90,7 @@ $(document).ready(function () {
             }
 
             vid.fadeTo(720, 1);
-            $(placeholder).fadeOut()
+            $(placeholder).fadeTo(720,0)
         });
     }
 
