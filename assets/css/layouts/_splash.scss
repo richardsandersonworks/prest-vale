@@ -299,7 +299,6 @@ html.reveal {
 .about-block {
     position: relative;
     z-index: $z50;
-    background-color: $clay;
 
     .close-link {
         position: fixed;
@@ -373,6 +372,8 @@ html.reveal {
 
     @include mq($break-m) {
 
+        background-color: $clay;
+        
         .close-link {
             width: auto;
             height: auto;
