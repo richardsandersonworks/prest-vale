@@ -321,11 +321,6 @@ $(document).ready(function () {
     }
 
     window.addEventListener('resize', function () {     
-        if ($(window).width() <= 700) {
-            introAnimFunctionSml()
-        } else {
-            introAnimFunction()
-        }
         introVideoFunc()
     })
 
