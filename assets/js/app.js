@@ -90,7 +90,8 @@ $(document).ready(function () {
             }
 
             vid.fadeTo(720, 1);
-            $(placeholder).fadeTo(360, 0)
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')
            
         });
     }
