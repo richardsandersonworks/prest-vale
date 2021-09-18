@@ -25,7 +25,15 @@ html.splash {
         
         .about-block {
             transition: background-color 360ms ease-in-out;     
+            
+            @include mq($break-m) {
+                transition: background-color 1s ease-in-out;
+            }
+        
         }
+
+
+
     }
 }
 
