@@ -108,9 +108,8 @@ html.splash {
 .intro-block {
 
     transition: background-color 20s linear;
-    background-image: url('/assets/prest-vale-poster-l.jpg');
-    background-size: cover;
-    background-position: center;
+
+    
 
     &.wrapper {
         // padding: 40px 5px;
@@ -130,6 +129,27 @@ html.splash {
 
     @include flex(center,flex-start);
     flex-direction: column;
+
+
+    #placeholder {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;   
+
+        background-image: url('/assets/prest-vale-poster-l.jpg');
+        background-size: cover;
+        background-position: center;
+        
+        animation: fadeIn 120ms cubic-bezier(0.68,-0.55,0.27,1.55);
+
+
+        @include mq($break-m) {
+            background-image: url('/assets/prest-vale-poster-xs.jpg'); 
+        }
+    }
 
 
     video {
@@ -441,9 +461,4 @@ html.reveal {
 
 }
 
-@include mq($break-m) {
-    .intro-block {
-        background-image: url('/assets/prest-vale-poster-xs.jpg'); 
-    }
-}
 
