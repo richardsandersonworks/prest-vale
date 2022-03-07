@@ -102,6 +102,8 @@ $(document).ready(function () {
         var vid = $('#js-vid');
         var theVideo = document.querySelector('video');
 
+        console.log('is video ready?')
+
         theVideo.oncanplaythrough = (event) => {
             console.log('Video buffered and can stream');   
             
