@@ -100,21 +100,25 @@ $(document).ready(function () {
 
         vid.oncanplaythrough = () => {
 
-            if (vid.readyState > 3) {               
+            // if (vid.readyState > 3) {               
 
-                console.log('Video buffered and can stream');   
+            //     console.log('Video buffered and can stream');   
                 
-                if (vid.paused) {
-                    // playVideo();
-                    video.play()
-                } else {
-                    console.log('video is playing already')
-                }
+            //     if (vid.paused) {
+            //         // playVideo();
+            //         video.play()
+            //     } else {
+            //         console.log('video is playing already')
+            //     }
 
-                $('.js-vid').fadeTo(720, 1);
+            //     $('.js-vid').fadeTo(720, 1);
+            //     $(placeholder).css('z-index',-1)
+            //     console.log('z index placeholder')  
+            // }  
+            video.play()
+            $('.js-vid').fadeTo(720, 1);
                 $(placeholder).css('z-index',-1)
                 console.log('z index placeholder')  
-            }  
         };
     }
 
