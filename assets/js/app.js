@@ -84,7 +84,7 @@ $(document).ready(function () {
     }
 
     // V2 Video Functions
-    const video = document.querySelector('video');
+    const video = document.querySelector('.js-vid');
     let vid = $('#js-vid');
 
     // Video Properties / Function
