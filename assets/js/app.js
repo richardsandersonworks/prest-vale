@@ -43,6 +43,7 @@ $(document).ready(function () {
 
     // V2 Video Functions
     const vid = document.getElementById('js-vid');
+    const video = document.querySelector("video")
 
 
     // Video Media Query / Function
@@ -95,29 +96,29 @@ $(document).ready(function () {
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
 
+        // if (vid.paused) {
+        //     playVideo();
+        // } else {
+        //     console.log('video is playing already')
+        // }
 
-        if (vid.paused) {
-            playVideo();
-        } else {
-            console.log('video is playing already')
-        }
-        vid.fadeTo(720, 1);
-        $(placeholder).css('z-index',-1)
-        console.log('z index placeholder')
+        // vid.fadeTo(720, 1);
+        // $(placeholder).css('z-index',-1)
+        // console.log('z index placeholder')
 
-        // vid.addEventListener('canplaythrough', function() {
-        //     console.log('Video buffered and can stream');   
+        video.addEventListener('canplaythrough', function() {
+            console.log('Video buffered and can stream');   
             
-        //     if (vid.paused) {
-        //         playVideo();
-        //     } else {
-        //         console.log('video is playing already')
-        //     }
-        //     vid.fadeTo(720, 1);
-        //     $(placeholder).css('z-index',-1)
-        //     console.log('z index placeholder')
+            if (video.paused) {
+                playVideo();
+            } else {
+                console.log('video is playing already')
+            }
+            video.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')
            
-        // });
+        });
     }
 
 
