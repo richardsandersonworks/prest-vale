@@ -63,8 +63,8 @@ $(document).ready(function () {
       
         newVideo.autoplay = true
         newVideo.loop = true
-        newVideo.prop('playsinline',true)
-        newVideo.prop('muted',true)
+        newVideo.setAttribute('playsinline','')
+        newVideo.setAttribute('muted','')
         newVideo.classList.add('js-vid')    
         newVideo.id = 'js-vid'
 
