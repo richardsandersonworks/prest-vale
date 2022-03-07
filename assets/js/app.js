@@ -42,8 +42,7 @@ $(document).ready(function () {
     }
 
     // V2 Video Functions
-    const video = document.querySelector('video');
-    const vid = $('#js-vid');
+    const vid = document.getElementById('js-vid');
 
 
     // Video Media Query / Function
@@ -86,7 +85,7 @@ $(document).ready(function () {
     // Play Video / Function
      async function playVideo() {
         try {
-          await video.play();
+          await vid.play();
           console.log('play')
         } catch(err) {
           console.log('cannot play')
@@ -95,11 +94,11 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
-        video.addEventListener('canplaythrough', (e) => {
+        vid.addEventListener('canplaythrough', function() {
 
             console.log('Video buffered and can stream');   
             
-            if (video.paused) {
+            if (vid.paused) {
                 playVideo();
             } else {
                 console.log('video is playing already')
