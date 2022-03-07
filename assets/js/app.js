@@ -105,7 +105,8 @@ $(document).ready(function () {
                 console.log('Video buffered and can stream');   
                 
                 if (vid.paused) {
-                    playVideo();
+                    // playVideo();
+                    video.play()
                 } else {
                     console.log('video is playing already')
                 }
