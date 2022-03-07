@@ -42,6 +42,47 @@ $(document).ready(function () {
         console.log('add animation')
     }
 
+    // Video Media Query / Function
+    const videoFunct = function () {
+
+        var block = document.querySelector('.intro-block')
+        var newVideo = document.createElement("video")
+        var newSource = document.createElement("source")
+      
+        newVideo.setAttribute('playsinline',true)
+        newVideo.setAttribute('muted',true)
+        newVideo.setAttribute('autoplay',true)
+        newVideo.setAttribute('loop',true)
+        newVideo.classList.add('js-vid')
+        newVideo.id = 'js-vid'
+
+        if (mql.matches == true) {
+            var thisSource = "/assets/prest-vale-xxs-muted.mp4"
+
+            newSource.src = thisSource
+            newSource.setAttribute('type','video/mp4')
+
+            newVideo.append(newSource)            
+            block.append(newVideo)
+
+            // vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+            console.log('mobile video')
+            // videoProp()
+        } else {
+            var thisSource = "/assets/prest-vale-s-muted.mp4"
+
+            newSource.src = thisSource
+            newSource.setAttribute('type','video/mp4')
+
+            newVideo.append(newSource)            
+            block.append(newVideo)
+
+            // vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+            console.log('desktop video')
+            // videoProp()
+        }
+    }
+
     // V2 Video Functions
     const video = document.querySelector('video');
     let vid = $('#js-vid');
@@ -54,17 +95,7 @@ $(document).ready(function () {
         vid.prop('loop',true)
     }
 
-    // Video Media Query / Function
-    const videoFunct = function () {
-        if (mql.matches == true) {
-            console.log('mobile video')
-            videoProp()
-        } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
-            console.log('desktop video')
-            videoProp()
-        }
-    }
+    
     // Play Video / Function
     async function playVideo() {
         try {
