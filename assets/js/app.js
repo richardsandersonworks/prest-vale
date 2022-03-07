@@ -83,7 +83,7 @@ $(document).ready(function () {
     }
 
     // Play Video / Function
-     async function playVideo() {
+    async function playVideo() {
         try {
           await vid.play();
           console.log('play')
@@ -95,7 +95,6 @@ $(document).ready(function () {
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
         vid.addEventListener('canplaythrough', function() {
-
             console.log('Video buffered and can stream');   
             
             if (vid.paused) {
@@ -321,7 +320,7 @@ $(document).ready(function () {
     const introVideoFunc = function () {
         introVideo
             .call(videoFunct)
-            .onComplete(videoPlay)
+            .call(videoPlay)
     }
     
 
