@@ -44,16 +44,6 @@ $(document).ready(function () {
 
     const video = document.querySelector('video');
 
-    // Play Video / Function
-    async function playVideo() {
-        try {
-          await video.play();
-          console.log('play')
-        } catch(err) {
-          console.log('cannot play')
-        }
-    }
-
     // Video Media Query / Function
     const videoFunct = function () {
 
@@ -93,40 +83,29 @@ $(document).ready(function () {
             console.log('desktop video')
             // videoProp()
         }
+    }
 
-        newVideo.addEventListener('canplaythrough', (e) => {
-            console.log('Video buffered and can stream');   
-            if (newVideo.paused) {
-                playVideo();
-            } else {
-                console.log('video is playing already')
-            }
-            vid.fadeTo(720, 1);
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')  
-        });
 
+    // Play Video / Function
+    async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
     }
 
     // V2 Video Functions
-    let vid = $('#js-vid');
-
-    // Video Properties / Function
-    const videoProp = function () {
-        vid.prop('playsinline',true)
-        vid.prop('muted',true)
-        vid.prop('autoplay',true)
-        vid.prop('loop',true)
-    }
-
+    var vid = $('#js-vid');
     
    
 
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
-        newVideo.addEventListener('canplaythrough', (e) => {
+        vid.addEventListener('canplaythrough', (e) => {
             console.log('Video buffered and can stream');   
-            if (newVideo.paused) {
+            if (vid.paused) {
                 playVideo();
             } else {
                 console.log('video is playing already')
@@ -348,7 +327,7 @@ $(document).ready(function () {
     const introVideoFunc = function () {
         introVideo
             .call(videoFunct)
-            // .call(videoPlay)
+            .call(videoPlay)
             // .call(removeBgClass)
     }
     
