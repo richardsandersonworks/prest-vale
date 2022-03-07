@@ -57,7 +57,6 @@ $(document).ready(function () {
     // Video Media Query / Function
     const videoFunct = function () {
         if (mql.matches == true) {
-            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
             videoProp()
         } else {
