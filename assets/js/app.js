@@ -49,10 +49,10 @@ $(document).ready(function () {
         var newVideo = document.createElement("video")
         var newSource = document.createElement("source")
       
-        newVideo.setAttribute('playsinline',true)
-        newVideo.setAttribute('muted',true)
-        newVideo.setAttribute('autoplay',true)
-        newVideo.setAttribute('loop',true)
+        newVideo.setAttribute('playsinline')
+        newVideo.setAttribute('muted')
+        newVideo.setAttribute('autoplay')
+        newVideo.setAttribute('loop')
         newVideo.classList.add('js-vid')
         newVideo.id = 'js-vid'
 
@@ -108,6 +108,7 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
+        
         console.log('video play function')
 
         // video.addEventListener('canplaythrough', (e) => {
