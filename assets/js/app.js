@@ -66,6 +66,7 @@ $(document).ready(function () {
 
             newVideo.append(newSource)            
             block.append(newVideo)
+            video.load()
 
             // vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
             console.log('mobile video')
@@ -78,7 +79,7 @@ $(document).ready(function () {
 
             newVideo.append(newSource)            
             block.append(newVideo)
-
+            video.load()
             // vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
             // videoProp()
@@ -100,22 +101,13 @@ $(document).ready(function () {
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
         var vid = $('#js-vid');
-        var theVideo = document.querySelector('video');
-        var videoElement = theVideo[0];
-
         console.log('is video ready?')
 
+        video.oncanplaythrough = (event) => {
 
-        theVideo.on('canplaythrough', callback);
-        // If the video is in the cache of the browser,
-        // the 'canplaythrough' event might have been triggered
-        // before we registered the event handler.
-        if (videoElement.readyState > 3) {
-            callback();
-            
             console.log('Video buffered and can stream');   
             
-            if (theVideo.paused) {
+            if (video.paused) {
                 playVideo();
             } else {
                 console.log('video is playing already')
@@ -123,9 +115,8 @@ $(document).ready(function () {
 
             vid.fadeTo(720, 1);
             $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')  
-        }
-        
+            console.log('z index placeholder')    
+        };
     }
 
     // Info Link Click
