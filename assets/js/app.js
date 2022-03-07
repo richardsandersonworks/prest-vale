@@ -94,19 +94,30 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
-        vid.addEventListener('canplaythrough', function() {
-            console.log('Video buffered and can stream');   
+
+
+        if (vid.paused) {
+            playVideo();
+        } else {
+            console.log('video is playing already')
+        }
+        vid.fadeTo(720, 1);
+        $(placeholder).css('z-index',-1)
+        console.log('z index placeholder')
+
+        // vid.addEventListener('canplaythrough', function() {
+        //     console.log('Video buffered and can stream');   
             
-            if (vid.paused) {
-                playVideo();
-            } else {
-                console.log('video is playing already')
-            }
-            vid.fadeTo(720, 1);
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')
+        //     if (vid.paused) {
+        //         playVideo();
+        //     } else {
+        //         console.log('video is playing already')
+        //     }
+        //     vid.fadeTo(720, 1);
+        //     $(placeholder).css('z-index',-1)
+        //     console.log('z index placeholder')
            
-        });
+        // });
     }
 
 
