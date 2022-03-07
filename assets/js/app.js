@@ -49,10 +49,10 @@ $(document).ready(function () {
         var newVideo = document.createElement("video")
         var newSource = document.createElement("source")
       
-        newVideo.setAttribute('playsinline')
-        newVideo.setAttribute('muted')
-        newVideo.setAttribute('autoplay')
-        newVideo.setAttribute('loop')
+        newVideo.playsinline = true
+        newVideo.muted = true
+        newVideo.autoplay = true
+        newVideo.loop = true
         newVideo.classList.add('js-vid')
         newVideo.id = 'js-vid'
 
