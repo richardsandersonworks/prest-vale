@@ -305,10 +305,12 @@ $(document).ready(function () {
     }
 
     const introVideoFunc = function () {
-        introVideo
-            .call(videoFunct())
-            .call(videoPlay())
-            // .call(removeBgClass)
+        // introVideo
+        //     .call(videoFunct)
+        //     .call(videoPlay)
+        //     // .call(removeBgClass)
+        videoFunct()
+        videoPlay()
     }
     
 
