@@ -318,9 +318,8 @@ $(document).ready(function () {
     }
 
     const introVideoFunc = function () {
-        introVideo
-            .call(videoFunct)
-            .call(videoPlay)
+        videoFunct()
+        videoPlay()
     }
     
 
