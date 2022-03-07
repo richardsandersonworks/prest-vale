@@ -66,7 +66,6 @@ $(document).ready(function () {
             videoProp()
         }
     }
-
     // Play Video / Function
     async function playVideo() {
         try {
@@ -79,10 +78,10 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
+        console.log('video play function')
         video.addEventListener('canplaythrough', (e) => {
-
             console.log('Video buffered and can stream');   
-            
+
             if (video.paused) {
                 playVideo();
             } else {
@@ -305,12 +304,10 @@ $(document).ready(function () {
     }
 
     const introVideoFunc = function () {
-        // introVideo
-        //     .call(videoFunct)
-        //     .call(videoPlay)
-        //     // .call(removeBgClass)
-        videoFunct()
-        videoPlay()
+        introVideo
+            .call(videoFunct)
+            .call(videoPlay)
+            // .call(removeBgClass)
     }
     
 
