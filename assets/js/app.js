@@ -87,7 +87,6 @@ $(document).ready(function () {
             newVideo.append(newSource)            
             block.append(newVideo)
             console.log('desktop video')
-
         }
     }
 
@@ -100,20 +99,18 @@ $(document).ready(function () {
 
         vid.oncanplaythrough = () => {
 
-            if (vid.readyState > 3) {               
+            console.log('Video ready');   
+            
+            if (vid.paused) {
+                playVideo()
+            } else {
+                console.log('video is playing already')
+            }
 
-                console.log('Video buffered and can stream');   
-                
-                if (vid.paused) {
-                    playVideo()
-                } else {
-                    console.log('video is playing already')
-                }
-
-                $('.js-vid').fadeTo(720, 1);
-                $(placeholder).css('z-index',-1)
-                console.log('z index placeholder')  
-            }  
+            $('.js-vid').fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')  
+              
             
         };
     }
