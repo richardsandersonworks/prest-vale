@@ -95,22 +95,25 @@ $(document).ready(function () {
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
        
-        var vid = $('#js-vid');
+        var vid = document.getElementById('js-vid');
         console.log('is video ready?')
 
-        video.oncanplaythrough = (event) => {
+        vid.oncanplaythrough = () => {
 
-            console.log('Video buffered and can stream');   
-            
-            if (video.paused) {
-                playVideo();
-            } else {
-                console.log('video is playing already')
-            }
+            if (vid.readyState > 3) {               
 
-            vid.fadeTo(720, 1);
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')    
+                console.log('Video buffered and can stream');   
+                
+                if (vid.paused) {
+                    playVideo();
+                } else {
+                    console.log('video is playing already')
+                }
+
+                vid.fadeTo(720, 1);
+                $(placeholder).css('z-index',-1)
+                console.log('z index placeholder')  
+            }  
         };
     }
 
