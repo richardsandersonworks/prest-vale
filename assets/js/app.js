@@ -42,6 +42,17 @@ $(document).ready(function () {
     }
     const video = document.querySelector('video');
 
+    // Play Video / Function
+    async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
+    }
+   
+
     // Video Media Query / Function
     const videoFunct = function () {
 
@@ -57,14 +68,13 @@ $(document).ready(function () {
         newVideo.id = 'js-vid'
 
         if (mql.matches == true) {
-            var thisSource = "/assets/prest-vale-xxs-muted.mp4"
 
+            var thisSource = "/assets/prest-vale-xxs-muted.mp4"
             newSource.src = thisSource
             newSource.setAttribute('type','video/mp4')
 
             newVideo.append(newSource)            
             block.append(newVideo)
-
 
             console.log('mobile video')
 
@@ -77,24 +87,14 @@ $(document).ready(function () {
             newVideo.append(newSource)            
             block.append(newVideo)
             console.log('desktop video')
-        }
 
-        video.play()
-    }
-
-
-    // Play Video / Function
-    async function playVideo() {
-        try {
-          await video.play();
-          console.log('play')
-        } catch(err) {
-          console.log('cannot play')
         }
     }
-   
+
+
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
+       
         var vid = $('#js-vid');
         console.log('is video ready?')
 
