@@ -95,17 +95,15 @@ $(document).ready(function () {
           console.log('cannot play')
         }
     }
-
-    // V2 Video Functions
-    var vid = $('#js-vid');
-    
    
 
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
-        vid.addEventListener('canplaythrough', (e) => {
+        var vid = $('#js-vid');
+
+        video.addEventListener('canplaythrough', (e) => {
             console.log('Video buffered and can stream');   
-            if (vid.paused) {
+            if (video.paused) {
                 playVideo();
             } else {
                 console.log('video is playing already')
