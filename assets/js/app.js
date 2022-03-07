@@ -35,13 +35,11 @@ $(document).ready(function () {
         mqXL = window.matchMedia('(min-width: 1440px)');
     ;
     
-   
     // Add Animation Class / Function
     const introBgClass = function () {
         $(introBlock).addClass('animate');
         console.log('add animation')
     }
-
     const video = document.querySelector('video');
 
     // Video Media Query / Function
@@ -66,11 +64,10 @@ $(document).ready(function () {
 
             newVideo.append(newSource)            
             block.append(newVideo)
-            video.load()
 
-            // vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
+
             console.log('mobile video')
-            // videoProp()
+
         } else {
             var thisSource = "/assets/prest-vale-s-muted.mp4"
 
@@ -79,11 +76,10 @@ $(document).ready(function () {
 
             newVideo.append(newSource)            
             block.append(newVideo)
-            video.load()
-            // vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
             console.log('desktop video')
-            // videoProp()
         }
+
+        video.play()
     }
 
 
@@ -97,7 +93,6 @@ $(document).ready(function () {
         }
     }
    
-
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
         var vid = $('#js-vid');
@@ -137,7 +132,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $('html').addClass('zwitch');
         }, 360)
-
     })
 
     // About Headings Click
@@ -351,9 +345,4 @@ $(document).ready(function () {
             introAnimFunctionSml()
         } 
     })
-
-
-
-
-
 }) 
