@@ -101,10 +101,18 @@ $(document).ready(function () {
     var videoPlay = function(e) {
         var vid = $('#js-vid');
         var theVideo = document.querySelector('video');
+        var videoElement = theVideo[0];
 
         console.log('is video ready?')
 
-        theVideo.oncanplaythrough = (event) => {
+
+        theVideo.on('canplaythrough', callback);
+        // If the video is in the cache of the browser,
+        // the 'canplaythrough' event might have been triggered
+        // before we registered the event handler.
+        if (videoElement.readyState > 3) {
+            callback();
+            
             console.log('Video buffered and can stream');   
             
             if (theVideo.paused) {
@@ -115,8 +123,8 @@ $(document).ready(function () {
 
             vid.fadeTo(720, 1);
             $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')    
-        };
+            console.log('z index placeholder')  
+        }
         
     }
 
