@@ -321,8 +321,7 @@ $(document).ready(function () {
     const introVideoFunc = function () {
         introVideo
             .call(videoFunct)
-            .call(videoPlay)
-            // .call(removeBgClass)
+            .onComplete(videoPlay)
     }
     
 
