@@ -115,11 +115,17 @@ $(document).ready(function () {
             //     $(placeholder).css('z-index',-1)
             //     console.log('z index placeholder')  
             // }  
-            video.play()
+            vid.play()
             $('.js-vid').fadeTo(720, 1);
-                $(placeholder).css('z-index',-1)
-                console.log('z index placeholder')  
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')  
         };
+
+
+        vid.play()
+        $('.js-vid').fadeTo(720, 1);
+        $(placeholder).css('z-index',-1)
+        console.log('z index placeholder - play')  
     }
 
     // Info Link Click
