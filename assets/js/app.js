@@ -42,6 +42,18 @@ $(document).ready(function () {
         console.log('add animation')
     }
 
+    const video = document.querySelector('video');
+
+    // Play Video / Function
+    async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
+    }
+
     // Video Media Query / Function
     const videoFunct = function () {
 
@@ -49,11 +61,11 @@ $(document).ready(function () {
         var newVideo = document.createElement("video")
         var newSource = document.createElement("source")
       
-        newVideo.playsinline = true
-        newVideo.muted = true
         newVideo.autoplay = true
         newVideo.loop = true
-        newVideo.classList.add('js-vid')
+        newVideo.prop('playsinline',true)
+        newVideo.prop('muted',true)
+        newVideo.classList.add('js-vid')    
         newVideo.id = 'js-vid'
 
         if (mql.matches == true) {
@@ -81,10 +93,16 @@ $(document).ready(function () {
             console.log('desktop video')
             // videoProp()
         }
+
+        if (newVideo.paused) {
+            playVideo();
+        } else {
+            console.log('video is playing already')
+        }
+
     }
 
     // V2 Video Functions
-    const video = document.querySelector('.js-vid');
     let vid = $('#js-vid');
 
     // Video Properties / Function
@@ -96,44 +114,11 @@ $(document).ready(function () {
     }
 
     
-    // Play Video / Function
-    async function playVideo() {
-        try {
-          await video.play();
-          console.log('play')
-        } catch(err) {
-          console.log('cannot play')
-        }
-    }
+   
 
     // Play Video when buffering is finished / Function.
-    const videoPlay = function(e) {
+    var videoPlay = function(e) {
         
-        console.log('video play function')
-
-        // video.addEventListener('canplaythrough', (e) => {
-
-        //     console.log('Video buffered and can stream');   
-
-        //     if (video.paused) {
-        //         playVideo();
-        //     } else {
-        //         console.log('video is playing already')
-        //     }
-
-        //     vid.fadeTo(720, 1);
-        //     $(placeholder).css('z-index',-1)
-        //     console.log('z index placeholder')
-           
-        // });
-
-
-        if (video.paused) {
-            playVideo();
-        } else {
-            console.log('video is playing already')
-        }
-
         vid.fadeTo(720, 1);
         $(placeholder).css('z-index',-1)
         console.log('z index placeholder')
