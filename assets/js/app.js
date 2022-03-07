@@ -110,7 +110,7 @@ $(document).ready(function () {
                     console.log('video is playing already')
                 }
 
-                vid.fadeTo(720, 1);
+                $('.js-vid').fadeTo(720, 1);
                 $(placeholder).css('z-index',-1)
                 console.log('z index placeholder')  
             }  
