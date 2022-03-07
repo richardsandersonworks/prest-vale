@@ -40,18 +40,11 @@ $(document).ready(function () {
         $(introBlock).addClass('animate');
         console.log('add animation')
     }
-    const video = document.querySelector('video');
 
-    // Play Video / Function
-    async function playVideo() {
-        try {
-          await video.play();
-          console.log('play')
-        } catch(err) {
-          console.log('cannot play')
-        }
-    }
-   
+    // V2 Video Functions
+    const video = document.querySelector('video');
+    const vid = $('#js-vid');
+
 
     // Video Media Query / Function
     const videoFunct = function () {
@@ -90,30 +83,34 @@ $(document).ready(function () {
         }
     }
 
+    // Play Video / Function
+     async function playVideo() {
+        try {
+          await video.play();
+          console.log('play')
+        } catch(err) {
+          console.log('cannot play')
+        }
+    }
 
     // Play Video when buffering is finished / Function.
-    var videoPlay = function(e) {
-       
-        var vid = document.getElementById('js-vid');
-        console.log('is video ready?')
+    const videoPlay = function(e) {
+        video.addEventListener('canplaythrough', (e) => {
 
-        vid.oncanplaythrough = () => {
-
-            console.log('Video ready');   
+            console.log('Video buffered and can stream');   
             
-            if (vid.paused) {
-                playVideo()
+            if (video.paused) {
+                playVideo();
             } else {
                 console.log('video is playing already')
             }
-
-            $('.js-vid').fadeTo(720, 1);
+            vid.fadeTo(720, 1);
             $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')  
-              
-            
-        };
+            console.log('z index placeholder')
+           
+        });
     }
+
 
     // Info Link Click
     $(infoLink).on('click', function (e) {
@@ -139,7 +136,7 @@ $(document).ready(function () {
 
     $(aboutNav + ' a').click(function(e) {
 
-        e.preventDefault()
+        e.preventDefault()  
 
         let sectionName = $(this).data('anchor'),
             sectionId = $('#' + sectionName),
