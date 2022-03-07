@@ -94,11 +94,17 @@ $(document).ready(function () {
             // videoProp()
         }
 
-        if (newVideo.paused) {
-            playVideo();
-        } else {
-            console.log('video is playing already')
-        }
+        newVideo.addEventListener('canplaythrough', (e) => {
+            console.log('Video buffered and can stream');   
+            if (newVideo.paused) {
+                playVideo();
+            } else {
+                console.log('video is playing already')
+            }
+            vid.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')  
+        });
 
     }
 
@@ -118,10 +124,17 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     var videoPlay = function(e) {
-        
-        vid.fadeTo(720, 1);
-        $(placeholder).css('z-index',-1)
-        console.log('z index placeholder')
+        newVideo.addEventListener('canplaythrough', (e) => {
+            console.log('Video buffered and can stream');   
+            if (newVideo.paused) {
+                playVideo();
+            } else {
+                console.log('video is playing already')
+            }
+            vid.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')  
+        });
     }
 
     // Info Link Click
@@ -335,7 +348,7 @@ $(document).ready(function () {
     const introVideoFunc = function () {
         introVideo
             .call(videoFunct)
-            .call(videoPlay)
+            // .call(videoPlay)
             // .call(removeBgClass)
     }
     
