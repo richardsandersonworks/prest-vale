@@ -43,44 +43,14 @@ $(document).ready(function () {
         console.log('add animation')
     }
 
-    // V2 Video Functions
-    const video = document.querySelector('video');
- 
-    // Video Properties / Function
-    const videoProp = function () {
-        vid.prop('playsinline',true)
-        vid.prop('muted',true)
-        vid.prop('autoplay',true)
-        vid.prop('loop',true)
-    }
-
-    // // Video Media Query / Function
-    // const videoFunct = function () {
-    //     if (mql.matches == true) {
-    //         console.log('mobile video')
-    //         mobileVid.style.display = 'block'
-
-    //         // videoProp()
-    //     } else {
-    //         // vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
-    //         console.log('desktop video')
-    //         desktopVid.style.display = 'block'
-    //         // videoProp()
-    //     }
-
-
-        
-    // }
-
-
-        // video.addEventListener('canplaythrough', (e) => {
-        //     console.log('Video buffered and can stream');    
-        // });
+  
+    
 
     // Play Video / Function
     async function playVideo(video) {
         try {
           await video.play();
+          console.log('play video')
         } catch(err) {
           console.log('cannot play')
         }
@@ -91,12 +61,13 @@ $(document).ready(function () {
         video.style.display = 'block'
         video.style.opacity = '1';
         $placeholder.style.zIndex = '-1'
+        console.log('display ' + video)
     }
 
     // Play Video when buffering is finished / Function.
     function videoPlay(e) {
 
-        console.log('videoPlay function')
+          console.log('videoPlay function')
 
         let mobileVid = document.querySelector('video.vid-mobile'),
             desktopVid = document.querySelector('video.vid-desktop');
@@ -108,11 +79,10 @@ $(document).ready(function () {
             showAndPlay(mobileVid)
 
         } else {
+            console.log('desktop video')
             playVideo(desktopVid)
             showAndPlay(desktopVid)
         }
-
-      
     }
 
     // Info Link Click
