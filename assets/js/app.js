@@ -57,7 +57,7 @@ $(document).ready(function () {
     }
 
     function showAndPlay(video) {
-        // video.play();
+        video.load();
         video.style.display = 'block'
         video.style.opacity = '1';
         $placeholder.style.zIndex = '-1'
@@ -75,13 +75,13 @@ $(document).ready(function () {
         if (mql.matches == true) {
 
             console.log('mobile video')
-            playVideo(mobileVid)
             showAndPlay(mobileVid)
+            playVideo(mobileVid)
 
         } else {
             console.log('desktop video')
-            playVideo(desktopVid)
             showAndPlay(desktopVid)
+            playVideo(desktopVid)
         }
     }
 
