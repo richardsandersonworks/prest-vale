@@ -44,10 +44,7 @@ $(document).ready(function () {
 
     // V2 Video Functions
     const video = document.querySelector('video');
-    let vid = $('#js-vid'),
-        mobileVid = document.querySelector('.vid-mobile'),
-        desktopVid = document.querySelector('.vid-desktop');
-
+ 
     // Video Properties / Function
     const videoProp = function () {
         vid.prop('playsinline',true)
@@ -87,10 +84,14 @@ $(document).ready(function () {
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
 
+        let vid = $('#js-vid'),
+            mobileVid = document.querySelector('video.vid-mobile'),
+            desktopVid = document.querySelector('video.vid-desktop');
+
+
         if (mql.matches == true) {
             console.log('mobile video')
             mobileVid.style.display = 'block'
-            
             mobileVid.play();
 
             mobileVid.fadeTo(720, 1);
