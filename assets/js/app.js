@@ -90,20 +90,24 @@ $(document).ready(function () {
         if (mql.matches == true) {
             console.log('mobile video')
             mobileVid.style.display = 'block'
-            var theVideo = mobileVid
-            theVideo.play();
+            
+            mobileVid.play();
+
+            mobileVid.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')  
 
         } else {
             console.log('desktop video')
             desktopVid.style.display = 'block'
-            var theVideo = desktopVid
-            theVideo.play();
-            
+          
+            desktopVid.play();
+        
+            desktopVid.fadeTo(720, 1);
+            $(placeholder).css('z-index',-1)
+            console.log('z index placeholder')    
         }
 
-        theVideo.fadeTo(720, 1);
-        $(placeholder).css('z-index',-1)
-        console.log('z index placeholder')    
       
         // theVideo.addEventListener('canplaythrough', (e) => {
 
