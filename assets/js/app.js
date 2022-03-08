@@ -1,4 +1,4 @@
-$(document).ready(function () {
+
 
     // Selectors 
     let introBlock = '.intro-block',
@@ -317,7 +317,3 @@ $(document).ready(function () {
     })
 
 
-
-
-
-}) 
