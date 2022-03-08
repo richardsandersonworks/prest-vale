@@ -81,30 +81,30 @@ $(document).ready(function () {
         }
     }
 
+
+
     // Play Video when buffering is finished / Function.
-    const videoPlay = function(e) {
+    function videoPlay(e) {
 
-        let vid = $('#js-vid'),
-            mobileVid = document.querySelector('video.vid-mobile'),
+        let mobileVid = document.querySelector('video.vid-mobile'),
             desktopVid = document.querySelector('video.vid-desktop');
-
 
         if (mql.matches == true) {
             console.log('mobile video')
+
             mobileVid.style.display = 'block'
             mobileVid.play();
-
-            mobileVid.fadeTo(720, 1);
+            mobileVid.style.opacity = 1;
             $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')  
+
+            console.log('z index placeholder')
 
         } else {
+
             console.log('desktop video')
             desktopVid.style.display = 'block'
-          
             desktopVid.play();
-        
-            desktopVid.fadeTo(720, 1);
+            desktopVid.style.opacity = 1;
             $(placeholder).css('z-index',-1)
             console.log('z index placeholder')    
         }
