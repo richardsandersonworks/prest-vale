@@ -72,6 +72,11 @@ $(document).ready(function () {
         
     // }
 
+
+        // video.addEventListener('canplaythrough', (e) => {
+        //     console.log('Video buffered and can stream');    
+        // });
+
     // Play Video / Function
     async function playVideo(video) {
         try {
@@ -83,7 +88,7 @@ $(document).ready(function () {
 
     function showAndPlay(video) {
         // video.play();
-        video.style.display = block
+        video.style.display = 'block'
         video.style.opacity = '1';
         $placeholder.style.zIndex = '-1'
     }
@@ -108,29 +113,6 @@ $(document).ready(function () {
         }
 
       
-        // theVideo.addEventListener('canplaythrough', (e) => {
-
-        //     console.log('Video buffered and can stream');   
-
-        //     async function playVideo() {
-        //         try {
-        //           await theVideo.play();
-        //           console.log('play')
-        //         } catch(err) {
-        //           console.log('cannot play')
-        //         }
-        //     }
-            
-        //     if (theVideo.paused) {
-        //         playVideo();
-        //     } else {
-        //         console.log('video is playing already')
-        //     }
-
-        //     theVideo.fadeTo(720, 1);
-        //     $(placeholder).css('z-index',-1)
-        //     console.log('z index placeholder')     
-        // });
     }
 
     // Info Link Click
