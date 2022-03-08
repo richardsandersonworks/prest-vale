@@ -44,7 +44,9 @@ $(document).ready(function () {
 
     // V2 Video Functions
     const video = document.querySelector('video');
-    let vid = $('#js-vid');
+    let vid = $('#js-vid'),
+        mobileVid = document.querySelector('.vid-mobile'),
+        desktopVid = document.querySelector('.vid-desktop');
 
     // Video Properties / Function
     const videoProp = function () {
@@ -54,23 +56,28 @@ $(document).ready(function () {
         vid.prop('loop',true)
     }
 
-    // Video Media Query / Function
-    const videoFunct = function () {
-        if (mql.matches == true) {
-            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
-            console.log('mobile video')
-            videoProp()
-        } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
-            console.log('desktop video')
-            videoProp()
-        }
-    }
+    // // Video Media Query / Function
+    // const videoFunct = function () {
+    //     if (mql.matches == true) {
+    //         console.log('mobile video')
+    //         mobileVid.style.display = 'block'
+
+    //         // videoProp()
+    //     } else {
+    //         // vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
+    //         console.log('desktop video')
+    //         desktopVid.style.display = 'block'
+    //         // videoProp()
+    //     }
+
+
+        
+    // }
 
     // Play Video / Function
     async function playVideo() {
         try {
-          await video.play();
+          await theVideo.play();
           console.log('play')
         } catch(err) {
           console.log('cannot play')
@@ -79,20 +86,39 @@ $(document).ready(function () {
 
     // Play Video when buffering is finished / Function.
     const videoPlay = function(e) {
-        video.addEventListener('canplaythrough', (e) => {
+
+        if (mql.matches == true) {
+            console.log('mobile video')
+            mobileVid.style.display = 'block'
+            var theVideo = mobileVid
+        } else {
+            console.log('desktop video')
+            desktopVid.style.display = 'block'
+            var theVideo = desktopVid
+        }
+      
+        theVideo.addEventListener('canplaythrough', (e) => {
 
             console.log('Video buffered and can stream');   
+
+            async function playVideo() {
+                try {
+                  await theVideo.play();
+                  console.log('play')
+                } catch(err) {
+                  console.log('cannot play')
+                }
+            }
             
-            if (video.paused) {
+            if (theVideo.paused) {
                 playVideo();
             } else {
                 console.log('video is playing already')
             }
 
-            vid.fadeTo(720, 1);
+            video.fadeTo(720, 1);
             $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')
-           
+            console.log('z index placeholder')     
         });
     }
 
@@ -306,9 +332,7 @@ $(document).ready(function () {
 
     const introVideoFunc = function () {
         introVideo
-            .call(videoFunct)
             .call(videoPlay)
-            // .call(removeBgClass)
     }
     
 
