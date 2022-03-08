@@ -91,35 +91,43 @@ $(document).ready(function () {
             console.log('mobile video')
             mobileVid.style.display = 'block'
             var theVideo = mobileVid
+            theVideo.play();
+
         } else {
             console.log('desktop video')
             desktopVid.style.display = 'block'
             var theVideo = desktopVid
-        }
-      
-        theVideo.addEventListener('canplaythrough', (e) => {
-
-            console.log('Video buffered and can stream');   
-
-            async function playVideo() {
-                try {
-                  await theVideo.play();
-                  console.log('play')
-                } catch(err) {
-                  console.log('cannot play')
-                }
-            }
+            theVideo.play();
             
-            if (theVideo.paused) {
-                playVideo();
-            } else {
-                console.log('video is playing already')
-            }
+        }
 
-            video.fadeTo(720, 1);
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')     
-        });
+        theVideo.fadeTo(720, 1);
+        $(placeholder).css('z-index',-1)
+        console.log('z index placeholder')    
+      
+        // theVideo.addEventListener('canplaythrough', (e) => {
+
+        //     console.log('Video buffered and can stream');   
+
+        //     async function playVideo() {
+        //         try {
+        //           await theVideo.play();
+        //           console.log('play')
+        //         } catch(err) {
+        //           console.log('cannot play')
+        //         }
+        //     }
+            
+        //     if (theVideo.paused) {
+        //         playVideo();
+        //     } else {
+        //         console.log('video is playing already')
+        //     }
+
+        //     theVideo.fadeTo(720, 1);
+        //     $(placeholder).css('z-index',-1)
+        //     console.log('z index placeholder')     
+        // });
     }
 
     // Info Link Click
