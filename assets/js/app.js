@@ -12,7 +12,8 @@ $(document).ready(function () {
         introLogoSmlSvg = $('h1.small-logo span'),
         introInfo = $('.info'),
         closeLink = '.close', 
-        placeholder = '#placeholder';
+        placeholder = '#placeholder',
+        $placeholder = document.getElementById('placeholder');
     ;
 
     // Timelines
@@ -72,41 +73,38 @@ $(document).ready(function () {
     // }
 
     // Play Video / Function
-    async function playVideo() {
+    async function playVideo(video) {
         try {
-          await theVideo.play();
-          console.log('play')
+          await video.play();
         } catch(err) {
           console.log('cannot play')
         }
     }
 
-
+    function showAndPlay(video) {
+        // video.play();
+        video.style.display = block
+        video.style.opacity = '1';
+        $placeholder.style.zIndex = '-1'
+    }
 
     // Play Video when buffering is finished / Function.
     function videoPlay(e) {
+
+        console.log('videoPlay function')
 
         let mobileVid = document.querySelector('video.vid-mobile'),
             desktopVid = document.querySelector('video.vid-desktop');
 
         if (mql.matches == true) {
+
             console.log('mobile video')
-
-            mobileVid.style.display = 'block'
-            mobileVid.play();
-            mobileVid.style.opacity = 1;
-            $(placeholder).css('z-index',-1)
-
-            console.log('z index placeholder')
+            playVideo(mobileVid)
+            showAndPlay(mobileVid)
 
         } else {
-
-            console.log('desktop video')
-            desktopVid.style.display = 'block'
-            desktopVid.play();
-            desktopVid.style.opacity = 1;
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')    
+            playVideo(desktopVid)
+            showAndPlay(desktopVid)
         }
 
       
