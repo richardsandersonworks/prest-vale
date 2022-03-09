@@ -43,8 +43,6 @@
         console.log('add animation')
     }
 
-  
-    
 
     // Play Video / Function
     async function playVideo(video) {
@@ -58,9 +56,9 @@
 
     function showAndPlay(video) {
         video.load();
-        video.style.display = 'block'
-        video.style.opacity = '1';
-        $placeholder.style.zIndex = '-1'
+        // video.style.display = 'block'
+        // video.style.opacity = '1';
+        // $placeholder.style.zIndex = '-1'
         console.log('display ' + video)
     }
 
