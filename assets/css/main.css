@@ -419,6 +419,8 @@ html.splash.reveal .about-block {
           animation: color 12s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
 }
 .intro-block #placeholder {
+  -webkit-transition: opacity 360ms ease-in-out;
+  transition: opacity 360ms ease-in-out;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100vw;
