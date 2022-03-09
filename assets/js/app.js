@@ -1,4 +1,5 @@
-$(document).ready(function () {
+
+
     // Selectors 
     let introBlock = '.intro-block',
         aboutWrap = '#about-wrap',
@@ -11,8 +12,10 @@ $(document).ready(function () {
         introLogoSmlSvg = $('h1.small-logo span'),
         introInfo = $('.info'),
         closeLink = '.close', 
-        placeholder = '#placeholder';
+        placeholder = '#placeholder',
+        $placeholder = document.getElementById('placeholder');
     ;
+
     // Timelines
     const introAnim = gsap.timeline({
         // onComplete: overlayV1
@@ -20,10 +23,14 @@ $(document).ready(function () {
     const introAnimSml = gsap.timeline({
     });
     const introVideo = gsap.timeline({})
+
     // Variables
     var h1Height = introLogo.height()
     var h1HeightSml = introLogoSml.height()
+
     // –––––––––––––
+
+
     // JS Media Queries
     let mql = window.matchMedia('(max-width: 700px)'),
         mqXL = window.matchMedia('(min-width: 1440px)');
@@ -35,57 +42,66 @@ $(document).ready(function () {
         $(introBlock).addClass('animate');
         console.log('add animation')
     }
-    // V2 Video Functions
-    const video = document.querySelector('video');
-    let vid = $('#js-vid');
-    // Video Properties / Function
-    const videoProp = function () {
-        vid.prop('playsinline',true)
-        vid.prop('muted',true)
-        vid.prop('autoplay',true)
-        vid.prop('loop',true)
-    }
-    // Video Media Query / Function
-    const videoFunct = function () {
-        if (mql.matches == true) {
-            vid.html('<source src="/assets/prest-vale-xxs-muted.mp4" type="video/mp4">')
-            console.log('mobile video')
-            videoProp()
-        } else {
-            vid.html('<source src="/assets/prest-vale-s-muted.mp4" type="video/mp4">')
-            console.log('desktop video')
-            videoProp()
-        }
-    }
+
+
     // Play Video / Function
-    async function playVideo() {
+    async function playVideo(video) {
         try {
           await video.play();
-          console.log('play')
+          console.log('play video')
         } catch(err) {
           console.log('cannot play')
         }
     }
-    // Play Video when buffering is finished / Function.
-    const videoPlay = function(e) {
-        video.addEventListener('canplaythrough', (e) => {
-            console.log('Video buffered and can stream');   
+
+    function showAndPlay(video) {
+        video.load();
+        // video.style.display = 'block'
+        // video.style.opacity = '1';
+        // $placeholder.style.zIndex = '-1'
+        console.log('load video')
+    }
+
+    function hidePlaceholder(video) {
+        video.addEventListener('canplaythrough', (event) => {
+            console.log('video buffered, hide placeholder')
             
-            if (video.paused) {
-                playVideo();
-            } else {
-                console.log('video is playing already')
-            }
-            vid.fadeTo(720, 1);
-            $(placeholder).css('z-index',-1)
-            console.log('z index placeholder')
-           
+            $placeholder.style.opacity = '0'
+            
+            $placeholder.addEventListener('transitionend', () => 
+                $placeholder.style.display = 'none'
+            );
         });
     }
+
+    // Play Video when buffering is finished / Function.
+    function videoPlay(e) {
+
+          console.log('videoPlay function')
+
+        let mobileVid = document.querySelector('video.vid-mobile'),
+            desktopVid = document.querySelector('video.vid-desktop');
+
+        if (mql.matches == true) {
+
+            console.log('mobile video')
+            showAndPlay(mobileVid)
+            playVideo(mobileVid)
+            hidePlaceholder(mobileVid) 
+
+        } else {
+            console.log('desktop video')
+            showAndPlay(desktopVid)
+            playVideo(desktopVid)
+            hidePlaceholder(desktopVid) 
+        }
+    }
+
     // Info Link Click
     $(infoLink).on('click', function (e) {
         
         e.preventDefault();
+
         var introBg = $('.about-nav a.about-us').data('bg-color');
         var infoCol = $('.about-nav a.about-us').data('color');
     
@@ -95,24 +111,33 @@ $(document).ready(function () {
         if ($(window).width() <= 700) { 
             $(aboutNav).css('background-color', introBg)
         }
+
         setTimeout(function () {
             $('html').addClass('zwitch');
         }, 360)
+
     })
+
     // About Headings Click
+
     $(aboutNav + ' a').click(function(e) {
+
         e.preventDefault()
+
         let sectionName = $(this).data('anchor'),
             sectionId = $('#' + sectionName),
             bgColor = $(this).data('bg-color'),
             col = $(this).data('color')
         ;
+
         $('.block').not('#' + sectionName).fadeOut(360, function () {
             $("html, body").animate({ scrollTop: 0 }, 360);
             sectionId.fadeIn(720);
         })
+
         $('body').css('background-color', bgColor).css('color', col)
         
+
         if ($(window).width() <= 700) { 
             $(aboutNav).css('background-color',bgColor).css('color', col)
             $('.about-block').css('background-color',bgColor).css('color', col)
@@ -121,7 +146,10 @@ $(document).ready(function () {
         $('.about-nav a').not('.'+sectionName).removeClass('focus')
         $(this).addClass('focus')
     });
+
+
     // Close Link 
+
     $(closeLink).on('click', function (e) {
         e.preventDefault();
         $('html').removeClass('reveal');
@@ -135,10 +163,12 @@ $(document).ready(function () {
            
             var introBg = $('.about-nav a.about-us').data('bg-color');
             var introCol = $('.about-nav a.about-us').data('color');
+
             $('body').css('background-color', introBg).css('color', introCol)
              
             $('.about-nav a').removeClass('focus')
             $('.about-nav a.about-us').addClass('focus')
+
             if ($(window).width() <= 700) { 
                 $('.about-nav').css('background-color', introBg)
             }
@@ -151,18 +181,23 @@ $(document).ready(function () {
     if (mql.matches == true) {
         $('a.close').html('&times;')
     } 
+
     const overlayV1 = function() {
         var bgNo = 1;
         var bgNoClass = ' .ov-' + bgNo.toString();
+
         $(mainLogo).on('mouseenter',function() {
             if ($(window).width() > 700 ) {
                 var overlaySlide = overlay + bgNoClass;
+
                 $(overlay).fadeIn(300)
                 console.log(bgNoClass)
                  
                 $(overlaySlide).addClass('display')
+
                 setTimeout(function() {
                     $(overlay).fadeOut(320, function() {
+
                         $(overlaySlide).removeClass('display')
                         if (bgNo == 4) {
                             bgNo = 1
@@ -198,6 +233,7 @@ $(document).ready(function () {
         var bgNo = 1;
         var bgNoClass = 'ov-' + bgNo.toString();
         var logoPositionXSml = 0;
+
         
         $(mainLogo).on('mouseenter', function() {
             
@@ -211,6 +247,7 @@ $(document).ready(function () {
         ;
     
         $(mainLogo + ' .inline-icon').css('transform', 'translateX(-'+logoPositionX+'%)')
+
         setTimeout(function() {
             $(mainLogo)
                 .removeClass('hover')
@@ -218,6 +255,7 @@ $(document).ready(function () {
                 .css('transform','none')
         
                 $(mainLogo + ' .inline-icon').css('transform','none')
+
                 if (bgNo == 4) {
                     bgNo = 1
                     bgNoClass = 'ov-' + bgNo.toString();
@@ -227,12 +265,14 @@ $(document).ready(function () {
                 }
             },1000)
         })
+
         $(mainLogo).on('click',function() {
             $(this)
                 .removeClass('hover')
                 .removeClass(bgNoClass)
                 .css('transform','none')
             $(mainLogo + ' .inline-icon').css('transform','none')
+
             if (bgNo == 4) {
                 bgNo = 1
                 bgNoClass = 'ov-' + bgNo.toString();
@@ -243,7 +283,9 @@ $(document).ready(function () {
         }) 
     }
     
+
     
+
     const introAnimFunction = function () {
         introAnim
         .set(introLogo, {y: h1Height})
@@ -252,6 +294,7 @@ $(document).ready(function () {
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
         // .call(introBgClass)
     }
+
     const introAnimFunctionSml = function () {
         introAnimSml
         .set(introLogoSml, { y: h1HeightSml })
@@ -261,15 +304,16 @@ $(document).ready(function () {
         .set(introInfo,{opacity: 1, delay: .36, duration: .36})
         // .call(introBgClass)
     }
+
     const introVideoFunc = function () {
         introVideo
-            .call(videoFunct)
             .call(videoPlay)
-            // .call(removeBgClass)
     }
     
+
     // Run Functions
     introVideoFunc()
+
     if ($(window).width() <= 700) {
         introAnimFunctionSml()
     } else {
@@ -278,10 +322,10 @@ $(document).ready(function () {
 
     window.addEventListener('resize', function () {     
         introVideoFunc()
-
         $(introLogo).fadeTo(720, 1)
         if ($(window).width() <= 700) {
             introAnimFunctionSml()
         } 
     })
-}) 
+
+
