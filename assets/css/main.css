@@ -409,12 +409,16 @@ html.splash.reveal .about-block {
   transition: transform ease-in 360ms;
   transition: transform ease-in 360ms, -webkit-transform ease-in 360ms;
 }
+@media (max-width: 700px) {
+  .intro-block {
+    background-image: url("/assets/prest-vale-poster-xs.jpg");
+  }
+}
 .intro-block.animate {
   -webkit-animation: color 12s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
           animation: color 12s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
 }
 .intro-block #placeholder {
-  display: none;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100vw;
