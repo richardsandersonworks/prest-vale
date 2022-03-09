@@ -65,7 +65,8 @@
     function hidePlaceholder(video) {
         video.addEventListener('canplaythrough', (event) => {
             console.log('video buffered, hide placeholder')
-            $placeholder.style.display = 'none'
+            // $placeholder.style.display = 'none'
+            $placeholder.fadeOut(320)
         });
     }
 
