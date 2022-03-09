@@ -67,6 +67,7 @@
             console.log('video buffered, hide placeholder')
             
             $placeholder.style.opacity = '0'
+            
             $placeholder.addEventListener('transitionend', () => 
                 $placeholder.style.display = 'none'
             );
