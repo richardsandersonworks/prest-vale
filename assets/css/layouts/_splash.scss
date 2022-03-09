@@ -109,7 +109,15 @@ html.splash {
 
     transition: background-color 20s linear;
 
-    
+    object-fit: cover;
+    background-image: url('/assets/prest-vale-poster-l.jpg');
+    background-size: cover;
+    background-position: center;
+    // animation: fadeIn 120ms cubic-bezier(0.68,-0.55,0.27,1.55);
+
+    @include mq($break-m) {
+        background-image: url('/assets/prest-vale-poster-xs.jpg'); 
+    }
 
     &.wrapper {
         // padding: 40px 5px;
