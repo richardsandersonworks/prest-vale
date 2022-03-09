@@ -59,13 +59,13 @@
         // video.style.display = 'block'
         // video.style.opacity = '1';
         // $placeholder.style.zIndex = '-1'
-        console.log('display ' + video)
+        console.log('load video')
     }
 
     function hidePlaceholder(video) {
         video.addEventListener('canplaythrough', (event) => {
-            console.log('I think I can play through the entire')
-            $placeholder.style.zIndex = '-1'
+            console.log('video buffered, hide placeholder')
+            $placeholder.style.display = 'none'
         });
     }
 
