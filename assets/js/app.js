@@ -62,6 +62,13 @@
         console.log('display ' + video)
     }
 
+    function hidePlaceholder(video) {
+        video.addEventListener('canplaythrough', (event) => {
+            console.log('I think I can play through the entire')
+            $placeholder.style.zIndex = '-1'
+        });
+    }
+
     // Play Video when buffering is finished / Function.
     function videoPlay(e) {
 
@@ -75,11 +82,13 @@
             console.log('mobile video')
             showAndPlay(mobileVid)
             playVideo(mobileVid)
+            hidePlaceholder(mobileVid) 
 
         } else {
             console.log('desktop video')
             showAndPlay(desktopVid)
             playVideo(desktopVid)
+            hidePlaceholder(desktopVid) 
         }
     }
 
