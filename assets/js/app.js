@@ -62,13 +62,21 @@
         console.log('load video')
     }
 
-    function hidePlaceholder(video) {
+    function hidePlaceholder(video, placeholder) {
         video.addEventListener('canplaythrough', (event) => {
             console.log('video buffered, hide placeholder')
-            // $placeholder.style.display = 'none'
-            $placeholder.fadeOut(320)
+            
+            $placeholder.style.opacity = '0'
+            $placeholder.addEventListener('transitionend', () => 
+                $placeholder.style.display = 'none'
+            );
         });
     }
+
+
+    target.addEventListener('click', () => target.style.opacity = '0');
+    // If you want to remove it from the page after the fadeout
+    target.addEventListener('transitionend', () => target.remove());
 
     // Play Video when buffering is finished / Function.
     function videoPlay(e) {
